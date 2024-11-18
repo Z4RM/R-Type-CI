@@ -1,0 +1,9 @@
+name: "R-Type CI"
+
+on:
+  push:
+
+jobs:
+  common:
+    name: "Common"
+    uses: "./.github/workflows/mirror.yml"
