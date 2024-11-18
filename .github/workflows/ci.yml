@@ -7,3 +7,4 @@ jobs:
   common:
     name: "Common"
     uses: "./.github/workflows/mirror.yml"
+    secrets: inherit
