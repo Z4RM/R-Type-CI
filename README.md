@@ -1,5 +1,9 @@
 # R-Type
 
+## Documentation
+
+You can consult the documentation [here](https://github.com/Z4RM/Epitech-Tek3-CPP-R-Type/wiki).
+
 ## Authors
 
 - [@Clement-Z4RM](https://github.com/Z4RM)
