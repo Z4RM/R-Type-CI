@@ -4,7 +4,12 @@
 
 You can consult the documentation [here](https://github.com/Z4RM/Epitech-Tek3-CPP-R-Type/wiki).
 
-## Authors
+## Contributing
+
+Please follow the guidelines to contribute to the project:
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Authors and Contributors
 
 - [@Clement-Z4RM](https://github.com/Z4RM)
 - [@josephinecr](https://github.com/josephinecr)
