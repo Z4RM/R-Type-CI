@@ -8,8 +8,22 @@
 
 ## Checklist
 
-- [ ] I have tested these changes and added automated tests (if applicable).
-- [ ] I have added documentation as needed.
+<!-- Remove lines that aren't applicable/needed (when "if ..." is specified) -->
+
+- [ ] Tests
+  - [ ] I have tested these changes.
+  - [ ] I have added automated tests (if applicable).
+  - [ ] I have tested on Linux.
+  - [ ] I have tested on Windows.
+- [ ] Documentation
+  - [ ] I have documented my functions with Doxygen comments.
+  - [ ] I have updated the Wiki (if needed).
+  - [ ] I have updated the README (if needed).
+  - [ ] I have documented for Linux AND Windows (if different).
+
+## Known Issues
+
+<!-- Any know issue that will/should be resolved -->
 
 ## Additional Notes
 
