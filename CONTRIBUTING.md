@@ -7,23 +7,23 @@ To ensure clarity and structure, follow these guidelines when naming branches:
 ### General Format
 
 ```
-[optional-scope]/<type>/<short-description>
+<type>/[optional-scope]/<short-description>
 ```
+
+### Types of Branches
+
+- **main**: The primary branch containing production-ready code.
+- **dev/dev**: The primary development branch containing pre-production code.
+- **dev/server**: The primary development branch of the server.
+- **dev/client**: The primary development branch of the client.
+- A branch type can be either a *Conventional Commit* type (cf. [Commit Message Conventions](#commit-message-conventions)) (except `feat` (replaced by `feature`), `chore` and `style` (both for minor changes, no need to do a branch)), or:
+  - **`feature`**: For developing new features.
+  - **`hotfix`**: For urgent fixes to production.
 
 ### Optional Scope
 
 The optional scope is either `server` or `client`.
 Whether it concerns both or something else, there is no need to precise it.
-
-### Types of Branches
-
-- **main**: The primary branch containing production-ready code.
-- **dev**: The primary development branch containing pre-production code.
-- **server/dev**: The primary development branch of the server.
-- **client/dev**: The primary development branch of the client.
-- A branch type can be either a *Conventional Commit* type (cf. [Commit Message Conventions](#commit-message-conventions)) (except `feat` (replaced by `feature`), `chore` and `style` (both for minor changes, no need to do a branch)), or:
-  - **`feature`**: For developing new features.
-  - **`hotfix`**: For urgent fixes to production.
 
 ### Branch Naming Rules
 
@@ -34,7 +34,7 @@ Whether it concerns both or something else, there is no need to precise it.
 ### Example
 
 ```
-server/feature/client-authentification
+feature/server/client-authentification
 ```
 
 ## Commit Message Conventions
