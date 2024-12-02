@@ -14,7 +14,7 @@ int main() {
         spdlog::info("R-Type client launched");
     #endif
     #ifdef RTYPE_IS_SERVER
-        spdlog::info("R-Type server launched on port 4242")
+        spdlog::info("R-Type server launched on port 4242");
     #endif
     spdlog::info("R-Type launched");
     return 0;
