@@ -32,19 +32,64 @@
 *.exe
 *.out
 *.app
+r-type_server
+r-type_client
+
+# Build
+build/
+
+### CMake / Conan
+
+# CMake generated files
+CMakeUserPresets.json.user
+
+# Conan build information
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json
+
+# CMake Build Artifacts
+CMakeFiles/
+build.ninja
+cmake_install.cmake
+CMakeCache.txt
+
+# Conan Artifacts
+conan/
+conan_host_profile
+conan_provider.cmake
+
+# Testing/Temporary Files
+Testing/
+
+# Temporary / Environment-Specific Files
+.cmake/
+
+## Various built-in generators
+# cmake_find_package generator https://docs.conan.io/en/latest/reference/generators/cmake_find_package.html
+Find*.cmake
+
+# cmake_paths generator https://docs.conan.io/en/1.4/integrations/cmake/cmake_paths_generator.html
+conan_paths.*
+
+# Environment activation scripts produced by https://docs.conan.io/en/latest/mastering/virtualenv.html#virtualenv-generator
+activate_run.ps1
+activate_run.sh
+deactivate_run.ps1
+deactivate_run.sh
+environment_run.ps1.env
+environment_run.sh.env
 
 ### JetBrains
 
-.idea
+.idea/
 *.iml
 out
 gen
 
 # CMake
 cmake-build-*/
-
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
 
 # File-based project format
 *.iws
@@ -63,15 +108,20 @@ fabric.properties
 
 ### VSCode
 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.vscode/
 
 # Local History for Visual Studio Code
 .history/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+### Other
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
