@@ -38,9 +38,9 @@ public:
         }
     }
 
-    T* getComponent(unsigned int entity) {
+    std::unique_ptr<T> getComponent(unsigned int entity) {
         if (_sparse.find(entity) != _sparse.end()) {
-            return &_components[_sparse[entity]];
+            return std::make_unique<T>(_components[_sparse[entity]]);
         }
         return nullptr;
     }
