@@ -3,7 +3,10 @@ set(COMMON_SRC
 )
 
 set(COMMON_HEADERS
-        include/foo.hpp
+        include/EntityManager.hpp
+        include/SparseSet.hpp
+        include/ComponentManager.hpp
+        include/SystemManager.hpp
 )
 
 add_library(r-type_common STATIC ${COMMON_SRC} ${COMMON_HEADERS})
