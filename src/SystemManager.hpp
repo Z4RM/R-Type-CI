@@ -14,16 +14,16 @@
 class SystemManager {
 public:
     void addSystem(const std::function<void()>& system) {
-        systems.push_back(system);
+        _systems.push_back(system);
     }
 
     void updateSystems() {
-        for (auto& system : systems) {
+        for (auto& system : _systems) {
             system();
         }
     }
 private:
-    std::vector<std::function<void()>> systems;
+    std::vector<std::function<void()>> _systems;
 };
 
 #endif //SYSTEMMANAGER_HPP

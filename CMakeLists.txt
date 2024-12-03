@@ -9,13 +9,14 @@ find_package(spdlog REQUIRED)
 
 set(RTYPE_SRC
         src/main.cpp
+        src/ComponentManager.hpp
+        src/EntityManager.hpp
+        src/SparseSet.hpp
+        src/SystemManager.hpp
 )
 
 set(RTYPE_HEADERS
-        include/ComponentManager.hpp
-        include/EntityManager.hpp
-        include/SparseSet.hpp
-        include/SystemManager.hpp
+        include/foo.hpp
 )
 
 #region Client
