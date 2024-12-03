@@ -12,7 +12,10 @@ set(RTYPE_SRC
 )
 
 set(RTYPE_HEADERS
-        include/foo.hpp
+        include/ComponentManager.hpp
+        include/EntityManager.hpp
+        include/SparseSet.hpp
+        include/SystemManager.hpp
 )
 
 #region Client
