@@ -13,6 +13,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
+        src/RType/ModeManager/ModeManager.cpp
+        src/RType/ModeManager/ModeManager.hpp
 )
 
 set(RTYPE_HEADERS
