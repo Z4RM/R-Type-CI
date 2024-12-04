@@ -8,6 +8,14 @@
 #include "spdlog/spdlog.h"
 #include "ModeManager.hpp"
 
+#ifdef RTYPE_IS_SERVER
+
+bool rtype::ModeManager::isServer() {
+    return true;
+}
+
+#else
+
 void rtype::ModeManager::enableServer() {
     std::lock_guard<std::mutex> lock(_modeMutex);
     _isServer = true;
@@ -31,10 +39,8 @@ bool rtype::ModeManager::isServer() {
     return _isServer;
 }
 
-#ifdef RTYPE_IS_SERVER
-bool rtype::ModeManager::_isServer = true;
-#else
 bool rtype::ModeManager::_isServer = false;
-#endif
 
 std::mutex rtype::ModeManager::_modeMutex;
+
+#endif

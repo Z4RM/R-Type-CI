@@ -8,6 +8,26 @@
 #ifndef RTYPE_MODEMANAGER_HPP_
 #define RTYPE_MODEMANAGER_HPP_
 
+#ifdef RTYPE_IS_SERVER
+
+namespace rtype {
+    /**
+     * @class ModeManager
+     *
+     * @brief Manages the program mode (server, client, client with server).
+     * It allows to get the current state of the server (enabled or disabled).
+     *
+     * @warning Because this code is only in the server binary, only the `isServer` method is available (which always returns `true`),
+     * because the server cannot be disabled from this server binary.
+     */
+    class ModeManager {
+    public:
+        static bool isServer();
+    };
+}
+
+#else
+
 #include <mutex>
 
 namespace rtype {
@@ -25,28 +45,31 @@ namespace rtype {
      * // Some code only included in client binary here...
      * #endif
      * ```
+     *
+     * @warning Because the server (part) state is intended to be modified only on the client, this class is differently defined on the server and the client.
+     * This following implementation is only for the client.
      */
     class ModeManager {
     public:
         /**
-         * @brief Enables the server part (intended to be used only by client).
+         * @brief Enables the server part.
          */
         static void enableServer();
 
         /**
-         * @brief Disables the server part (intended to be used only by client).
+         * @brief Disables the server part.
          */
         static void disableServer();
 
         /**
-         * @brief Switches the server part state (intended to be used only by client).
+         * @brief Switches the server part state.
          * If it was enabled, it's disabled.
          * Otherwise, if it was disabled, it's enabled.
          */
         static void switchServer();
 
         /**
-         * @return Whether the current program is a server (or a client with a server) or not.
+         * @return Whether the program has the server part enabled or not.
          */
         static bool isServer();
 
@@ -64,13 +87,6 @@ namespace rtype {
         static std::mutex _modeMutex;
     };
 }
-
-/**
- * @brief Macro to get the current state of the server.
- *
- * @see rtype::ModeManager::isServer
- */
-#define IS_SERVER rtype::ModeManager::isServer()
 
 /**
  * @brief Macro to enable the server.
@@ -92,5 +108,14 @@ namespace rtype {
  * @see rtype::ModeManager::switchServer
  */
 #define SWITCH_SERVER() rtype::ModeManager::switchServer()
+
+#endif
+
+/**
+ * @brief Macro to get the current state of the server.
+ *
+ * @see rtype::ModeManager::isServer
+ */
+#define IS_SERVER rtype::ModeManager::isServer()
 
 #endif /* !RTYPE_MODEMANAGER_HPP_ */
