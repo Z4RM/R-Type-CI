@@ -7,7 +7,7 @@
 
 #pragma once
 #include "Structure.hpp"
-#include "../include/ECS.hpp"
+#include "ECS.hpp"
 
 /**
  * @class Player

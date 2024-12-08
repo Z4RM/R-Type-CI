@@ -8,7 +8,7 @@
 // TODO: this is a sample code, remove it
 
 #include "spdlog/spdlog.h"
-#include "../include/ECS.hpp"
+#include "ECS.hpp"
 #include "Components/Player.hpp"
 
 #include <iostream>
