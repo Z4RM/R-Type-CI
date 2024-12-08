@@ -8,9 +8,9 @@
 #ifndef ECS_HPP
 #define ECS_HPP
 
-#include "../src/ECS/ComponentManager.hpp"
-#include "../src/ECS/EntityManager.hpp"
-#include "../src/ECS/SparseSet.hpp"
-#include "../src/ECS/SystemManager.hpp"
+#include "ECS/ComponentManager.hpp"
+#include "ECS/EntityManager.hpp"
+#include "ECS/SparseSet.hpp"
+#include "ECS/SystemManager.hpp"
 
 #endif //ECS_HPP
