@@ -60,6 +60,14 @@ public:
     ~Player() = default;
 
     /**
+     * @brief Gets the unique identifier of the player entity.
+     *
+     * @return The unique identifier of the player entity.
+     */
+    [[nodiscard]] size_t getId() const { return _id; };
+
+private:
+    /**
      * @brief The unique identifier for the player entity.
      */
     size_t _id;
