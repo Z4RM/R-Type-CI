@@ -13,9 +13,7 @@ To ensure clarity and structure, follow these guidelines when naming branches:
 ### Types of Branches
 
 - **main**: The primary branch containing production-ready code.
-- **dev/dev**: The primary development branch containing pre-production code.
-- **dev/server**: The primary development branch of the server.
-- **dev/client**: The primary development branch of the client.
+- **dev**: The primary development branch containing pre-production code.
 - A branch type can be either a *Conventional Commit* type (cf. [Commit Message Conventions](#commit-message-conventions)) (except `feat` (replaced by `feature`), `chore` and `style` (both for minor changes, no need to do a branch)), or:
   - **`feature`**: For developing new features.
   - **`hotfix`**: For urgent fixes to production.
