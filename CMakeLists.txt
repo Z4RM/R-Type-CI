@@ -33,8 +33,6 @@ add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
 
-target_include_directories(r-type_server PUBLIC include)
-
 target_link_libraries(r-type_server PRIVATE spdlog::spdlog)
 #endregion
 
