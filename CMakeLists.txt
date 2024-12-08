@@ -17,6 +17,8 @@ set(RTYPE_SRC
         src/ECS/SystemManager.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
+        src/RType/Game/Game.cpp
+        src/RType/Game/Game.hpp
 )
 
 set(RTYPE_HEADERS
