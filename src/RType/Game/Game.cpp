@@ -17,3 +17,6 @@ rtype::Game::Game(int width, int height, const std::string &title) : _window(sf:
     }
     _backgroundSprite.setTexture(_backgroundTexture);
 }
+
+rtype::Game::~Game() {}
+
