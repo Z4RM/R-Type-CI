@@ -45,7 +45,6 @@ void rtype::systems::RenderWindowSys::render(const ecs::EntityManager& entityMan
         auto sortedEntities = getEntitiesSortedByZIndex(entityManager, componentManager);
 
         for (auto e : sortedEntities) {
-            std::cout << "Rendering entity with id: " << e.id << std::endl;
             auto sprite = componentManager.getComponent<Sprite>(e.id);
             if (sprite && sprite->sprite) {
                 renderWindow->window->draw(*sprite->sprite);
