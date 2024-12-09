@@ -8,7 +8,7 @@
 #pragma once
 #include "ECS.hpp"
 
-namespace rtype::system
+namespace rtype::systems
 {
     /**
      * @class Movement

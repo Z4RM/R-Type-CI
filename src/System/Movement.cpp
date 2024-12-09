@@ -8,7 +8,7 @@
 #include "Movement.hpp"
 #include "Structures.hpp"
 
-void rtype::system::Movement::move(const rtype::ecs::EntityManager& entityManager, rtype::ecs::ComponentManager& componentManager)
+void rtype::systems::Movement::move(const rtype::ecs::EntityManager& entityManager, rtype::ecs::ComponentManager& componentManager)
 {
     for (auto& entity : entityManager.getEntities()) {
         const auto pos = componentManager.getComponent<Position>(entity);
