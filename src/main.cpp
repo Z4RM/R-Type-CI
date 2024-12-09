@@ -5,17 +5,11 @@
 ** main.cpp
 */
 
-// TODO: this is a sample code, remove it
+#include "RType/RType.hpp"
 
-#include "spdlog/spdlog.h"
-
+/**
+ * @see rtype::RType::run
+ */
 int main() {
-    #ifdef RTYPE_IS_CLIENT
-        spdlog::info("R-Type client launched");
-    #endif
-    #ifdef RTYPE_IS_SERVER
-        spdlog::info("R-Type server launched on port 4242");
-    #endif
-    spdlog::info("R-Type launched");
-    return 0;
+    return rtype::RType::run();
 }

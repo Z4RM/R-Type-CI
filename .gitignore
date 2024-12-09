@@ -118,6 +118,9 @@ fabric.properties
 
 ### Other
 
+# Configuration files
+*.ini
+
 # Logs and temporary files
 *.log
 *.tmp
