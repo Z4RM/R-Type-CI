@@ -6,7 +6,7 @@
 */
 
 #pragma once
-#include "Structure.hpp"
+#include "Structures.hpp"
 #include "ECS.hpp"
 
 /**

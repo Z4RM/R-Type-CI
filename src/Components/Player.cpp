@@ -9,7 +9,7 @@
 
 #include <utility>
 
-Player::Player(
+rtype::components::Player::Player(
     rtype::ecs::EntityManager& entityManager,
     rtype::ecs::ComponentManager& componentManager,
     const Position pos,
