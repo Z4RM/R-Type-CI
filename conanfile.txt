@@ -1,4 +1,5 @@
 [requires]
+inih/58
 spdlog/1.15.0
 
 [generators]

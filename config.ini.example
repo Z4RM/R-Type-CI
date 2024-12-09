@@ -1,0 +1,13 @@
+; This file is an example of the configuration used by the R-Type.
+; To use it, copy it to "config.ini" and customize the configuration values.
+
+[log]
+; The logging level
+; trace    | Highly detailed logs for tracing program execution.
+; debug    | Logs for debugging during development.
+; info     | Informational messages about normal operations. This is the default log level.
+; warn     | Warnings about potential issues.
+; err      | Errors that occur but don’t stop the app.
+; critical | Critical errors requiring immediate attention.
+; off      | Turns off logging completely.
+level=info
