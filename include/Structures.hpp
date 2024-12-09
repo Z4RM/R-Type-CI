@@ -50,4 +50,9 @@ struct Animation
     int frameRate;
 };
 
+struct String
+{
+    std::string s;
+};
+
 #endif //STRUCTURE_HPP

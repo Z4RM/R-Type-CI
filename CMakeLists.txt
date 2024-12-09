@@ -18,8 +18,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
-        src/Components/Player.cpp
-        src/Components/Player.hpp
+        src/RType/Components/Player.cpp
+        src/RType/Components/Player.hpp
         src/RType/RType.cpp
         src/RType/RType.hpp
         src/RType/Config/Config.cpp
@@ -28,6 +28,10 @@ set(RTYPE_SRC
         src/RType/ModeManager/ModeManager.hpp
         src/RType/Game/Game.cpp
         src/RType/Game/Game.hpp
+        src/RType/Components/Window.cpp
+        src/RType/Components/Window.hpp
+        src/RType/System/RenderWindow.cpp
+        src/RType/System/RenderWindow.hpp
 )
 
 set(RTYPE_HEADERS
@@ -35,7 +39,7 @@ set(RTYPE_HEADERS
         include/ECS.hpp
 )
 
-link_libraries(inih::inireader spdlog::spdlog)
+link_libraries(inih::inireader spdlog::spdlog sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
 
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
