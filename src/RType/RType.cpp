@@ -9,7 +9,6 @@
 #include "RType.hpp"
 
 int rtype::RType::run() {
-    Config config;
-
+    Config::initialize();
     return 0;
 }

@@ -7,7 +7,7 @@
 
 #include "Config.hpp"
 
-rtype::Config::LogLevels rtype::Config::_logLevels = {
+const rtype::Config::LogLevels rtype::Config::_logLevels = {
         {"trace",    spdlog::level::trace},
         {"debug",    spdlog::level::debug},
         {"info",     spdlog::level::info},
@@ -30,6 +30,6 @@ void rtype::Config::_setLogLevel(const INIReader &reader) {
         if (_logLevels.find(logLevel) == _logLevels.end())
             spdlog::warn("\"\33[3m" + logLevel + "\33[0m\" is not a valid log level");
         else
-            spdlog::set_level(_logLevels[logLevel]);
+            spdlog::set_level(_logLevels.at(logLevel));
     }
 }
