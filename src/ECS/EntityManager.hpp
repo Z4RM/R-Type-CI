@@ -68,6 +68,20 @@ namespace rtype::ecs
         bool isEntityActive(unsigned int entity) const {
             return _activeEntities.find(entity) != _activeEntities.end();
         }
+
+        /**
+         * @brief Retrieves the set of active entities.
+         *
+         * This method provides access to the set of active entities currently managed
+         * by the ECS framework. Each entity is represented by an unsigned integer.
+         *
+         * @return A constant reference to an `std::unordered_set` containing the IDs
+         *         of all active entities.
+        */
+        std::unordered_set<unsigned int> getEntities() const {
+            return _activeEntities;
+        }
+
     private:
         /**
          * @brief The next unique ID to assign to a new entity.

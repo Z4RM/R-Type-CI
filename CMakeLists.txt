@@ -28,11 +28,14 @@ set(RTYPE_SRC
         src/RType/ModeManager/ModeManager.hpp
         src/RType/Components/Window.cpp
         src/RType/Components/Window.hpp
+        src/Systems/Movement.cpp
+        src/Systems/Movement.hpp
 )
 
 set(RTYPE_HEADERS
         include/Structures.hpp
         include/ECS.hpp
+        include/Systems.hpp
 )
 
 link_libraries(inih::inireader spdlog::spdlog sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
