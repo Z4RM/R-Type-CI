@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
+find_package(inih REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 
@@ -19,6 +20,10 @@ set(RTYPE_SRC
         src/ECS/SystemManager.hpp
         src/Components/Player.cpp
         src/Components/Player.hpp
+        src/RType/RType.cpp
+        src/RType/RType.hpp
+        src/RType/Config/Config.cpp
+        src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
 )
@@ -28,18 +33,16 @@ set(RTYPE_HEADERS
         include/ECS.hpp
 )
 
+link_libraries(inih::inireader spdlog::spdlog)
+
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
-
-target_link_libraries(r-type_server PRIVATE spdlog::spdlog)
 #endregion
 
 #region Client
 add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
-
-target_link_libraries(r-type_client PRIVATE spdlog::spdlog sfml-system sfml-window sfml-graphics sfml-audio)
 #endregion
