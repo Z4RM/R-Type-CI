@@ -26,8 +26,8 @@ set(RTYPE_SRC
         src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
-        src/System/Movement.cpp
-        src/System/Movement.hpp
+        src/Systems/Movement.cpp
+        src/Systems/Movement.hpp
 )
 
 set(RTYPE_HEADERS
