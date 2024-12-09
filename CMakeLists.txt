@@ -16,6 +16,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
+        src/RType/RType.cpp
+        src/RType/RType.hpp
         src/RType/Config/Config.cpp
         src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
