@@ -26,11 +26,14 @@ set(RTYPE_SRC
         src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
+        src/System/Movement.cpp
+        src/System/Movement.hpp
 )
 
 set(RTYPE_HEADERS
         include/Structures.hpp
         include/ECS.hpp
+        include/Systems.hpp
 )
 
 link_libraries(inih::inireader spdlog::spdlog)
