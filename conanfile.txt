@@ -1,6 +1,7 @@
 [requires]
 inih/58
 spdlog/1.15.0
+sfml/2.6.2
 
 [generators]
 CMakeDeps

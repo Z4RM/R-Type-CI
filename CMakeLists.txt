@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.29)
+
 project(RType VERSION 0.0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -7,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 find_package(inih REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 
 include_directories(include src)
 
@@ -16,6 +18,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
+        src/Components/Player.cpp
+        src/Components/Player.hpp
         src/RType/RType.cpp
         src/RType/RType.hpp
         src/RType/Config/Config.cpp
@@ -25,7 +29,8 @@ set(RTYPE_SRC
 )
 
 set(RTYPE_HEADERS
-        include/foo.hpp
+        include/Structures.hpp
+        include/ECS.hpp
 )
 
 link_libraries(inih::inireader spdlog::spdlog)
