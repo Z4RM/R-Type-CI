@@ -68,6 +68,11 @@ namespace rtype::ecs
         bool isEntityActive(unsigned int entity) const {
             return _activeEntities.find(entity) != _activeEntities.end();
         }
+
+        std::unordered_set<unsigned int> getEntities() const {
+            return _activeEntities;
+        }
+
     private:
         /**
          * @brief The next unique ID to assign to a new entity.
