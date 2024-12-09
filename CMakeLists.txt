@@ -26,12 +26,8 @@ set(RTYPE_SRC
         src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
-        src/RType/Game/Game.cpp
-        src/RType/Game/Game.hpp
         src/RType/Components/Window.cpp
         src/RType/Components/Window.hpp
-        src/RType/System/RenderWindow.cpp
-        src/RType/System/RenderWindow.hpp
 )
 
 set(RTYPE_HEADERS
