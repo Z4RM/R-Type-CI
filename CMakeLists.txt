@@ -24,7 +24,7 @@ set(RTYPE_SRC
 )
 
 set(RTYPE_HEADERS
-        include/Structure.hpp
+        include/Structures.hpp
         include/ECS.hpp
 )
 
