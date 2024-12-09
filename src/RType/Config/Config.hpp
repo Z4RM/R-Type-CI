@@ -8,6 +8,7 @@
 #ifndef RTYPE_CONFIG_HPP_
 #define RTYPE_CONFIG_HPP_
 
+#include "INIReader.h"
 #include "spdlog/spdlog.h"
 
 namespace rtype {

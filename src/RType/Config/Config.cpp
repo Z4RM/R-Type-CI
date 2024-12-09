@@ -5,7 +5,6 @@
 ** Config.cpp
 */
 
-#include "INIReader.h"
 #include "Config.hpp"
 
 rtype::Config::LogLevels rtype::Config::_logLevels = {
