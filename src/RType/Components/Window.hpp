@@ -10,9 +10,9 @@
 #include "ECS.hpp"
 #include "Structures.hpp"
 
-struct RenderWindow
+struct RWindow
 {
-    sf::RenderWindow window;
+    mutable sf::RenderWindow *window;
 };
 
 struct Style
@@ -46,10 +46,10 @@ namespace rtype::components
             rtype::ecs::ComponentManager& componentManager,
             Size size,
             const String &title,
-            RenderWindow renderWindow,
+            const RWindow& renderWindow,
             Mode mode,
             FrameLimit frameLimit,
-            const Sprite &backgroundSprite
+            Sprite &backgroundSprite
             );
 
         ~Window() = default;

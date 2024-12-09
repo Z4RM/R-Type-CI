@@ -30,6 +30,8 @@ set(RTYPE_SRC
         src/RType/Components/Window.hpp
         src/Systems/Movement.cpp
         src/Systems/Movement.hpp
+        src/Systems/RenderWindow.cpp
+        src/Systems/RenderWindow.hpp
 )
 
 set(RTYPE_HEADERS
