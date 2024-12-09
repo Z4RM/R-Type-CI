@@ -10,6 +10,8 @@
 
 #include <vector>
 #include <functional>
+#include "ECS/EntityManager.hpp"
+#include "ECS/ComponentManager.hpp"
 
 /**
  * @class SystemManager
@@ -22,6 +24,8 @@ namespace rtype::ecs
 {
     class SystemManager {
     public:
+        SystemManager(EntityManager &entityManager, ComponentManager &componentManager) : _entityManager(entityManager), _componentManager(componentManager) {}
+
         /**
          * @brief Adds a new system to the manager.
          *
@@ -30,7 +34,7 @@ namespace rtype::ecs
          *
          * @param system The system function to add.
          */
-        void addSystem(const std::function<void()>& system) {
+        void addSystem(const std::function<void(EntityManager& entity_manager, ComponentManager& component_manager)>& system) {
             _systems.push_back(system);
         }
 
@@ -41,7 +45,7 @@ namespace rtype::ecs
          */
         void updateSystems() {
             for (auto& system : _systems) {
-                system();
+                system(_entityManager, _componentManager);
             }
         }
     private:
@@ -50,7 +54,10 @@ namespace rtype::ecs
          *
          * Stores all systems as callable objects (`std::function<void()>`) to be executed during updates.
          */
-        std::vector<std::function<void()>> _systems;
+        std::vector<std::function<void(EntityManager& entity_manager, ComponentManager& component_manager)>> _systems;
+
+        EntityManager& _entityManager;
+        ComponentManager& _componentManager;
     };
 }
 
