@@ -26,18 +26,16 @@ set(RTYPE_HEADERS
         include/foo.hpp
 )
 
+link_libraries(inih::inireader spdlog::spdlog)
+
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
-
-target_link_libraries(r-type_server PRIVATE spdlog::spdlog)
 #endregion
 
 #region Client
 add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
-
-target_link_libraries(r-type_client PRIVATE spdlog::spdlog)
 #endregion
