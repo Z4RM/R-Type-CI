@@ -39,7 +39,7 @@ void rtype::systems::RenderWindowSys::render(const ecs::EntityManager& entityMan
     if (IS_SERVER)
         return;
     for (const auto& entity : entityManager.getEntities()) {
-        auto renderWindow = componentManager.getComponent<RWindow>(entity);
+        auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
         if (!renderWindow)
             continue;
         auto sortedEntities = getEntitiesSortedByZIndex(entityManager, componentManager);
@@ -59,11 +59,11 @@ void rtype::systems::RenderWindowSys::createWindow(const ecs::EntityManager& ent
     if (IS_SERVER)
         return;
     for (const auto& entity : entityManager.getEntities()) {
-        const auto renderWindow = componentManager.getComponent<RWindow>(entity);
-        const auto mode = componentManager.getComponent<Mode>(entity);
+        const auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
+        const auto mode = componentManager.getComponent<rtype::components::Mode>(entity);
         const auto size = componentManager.getComponent<Size>(entity);
         const auto title = componentManager.getComponent<String>(entity);
-        const auto frameLimit = componentManager.getComponent<FrameLimit>(entity);
+        const auto frameLimit = componentManager.getComponent<rtype::components::FrameLimit>(entity);
         const auto created = componentManager.getComponent<Created>(entity);
         if (renderWindow && mode && size && title && frameLimit && !created->isCreate) {
             const int width = static_cast<int>(size->width);

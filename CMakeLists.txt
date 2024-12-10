@@ -40,7 +40,7 @@ set(RTYPE_HEADERS
         include/Systems.hpp
 )
 
-link_libraries(inih::inireader spdlog::spdlog sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
+link_libraries(inih::inireader spdlog::spdlog)
 
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
@@ -52,4 +52,6 @@ target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
 add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
+
+target_link_libraries(r-type_client sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
 #endregion

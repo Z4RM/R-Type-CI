@@ -10,35 +10,35 @@
 #include "ECS.hpp"
 #include "Structures.hpp"
 
-struct RWindow
-{
-    mutable sf::RenderWindow *window;
-};
-
-struct Style
-{
-    bool none = false;
-    bool titleBar = false;
-    bool resize = false;
-    bool close = false;
-    bool fullScreen = false;
-    bool defaults = true;
-    uint32_t style = 0;
-};
-
-struct Mode
-{
-    sf::VideoMode mode;
-    Style style;
-};
-
-struct FrameLimit
-{
-    unsigned int limit = 60;
-};
-
 namespace rtype::components
 {
+    struct RWindow
+    {
+        mutable sf::RenderWindow *window;
+    };
+
+    struct Style
+    {
+        bool none = false;
+        bool titleBar = false;
+        bool resize = false;
+        bool close = false;
+        bool fullScreen = false;
+        bool defaults = true;
+        uint32_t style = 0;
+    };
+
+    struct Mode
+    {
+        sf::VideoMode mode;
+        Style style;
+    };
+
+    struct FrameLimit
+    {
+        unsigned int limit = 60;
+    };
+
     class Window {
     public:
         Window(

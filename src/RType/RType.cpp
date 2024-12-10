@@ -23,8 +23,8 @@ int rtype::RType::run() {
 
     String title;
     title.s = "RType";
-    RWindow renderWindow;
-    Mode mode;
+    rtype::components::RWindow renderWindow;
+    rtype::components::Mode mode;
     mode.style.style = sf::Style::Default;
     Sprite sprite1 = {{0, 0, 0}, {800, 600}, "sprites/background.jpg", {-1}};
     rtype::components::Window window(
