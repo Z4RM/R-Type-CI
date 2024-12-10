@@ -32,6 +32,10 @@ set(RTYPE_SRC
         src/Systems/Movement.hpp
         src/Systems/RenderWindow.cpp
         src/Systems/RenderWindow.hpp
+        src/RType/RType.cpp
+        src/Systems/InputHandler.hpp
+        src/Systems/InputSystem.cpp
+        src/Systems/InputSystem.hpp
 )
 
 set(RTYPE_HEADERS

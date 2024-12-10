@@ -34,7 +34,7 @@ std::vector<rtype::ecs::Entity> getEntitiesSortedByZIndex(
     return renderableEntities;
 }
 
-void rtype::systems::RenderWindowSys::render(const ecs::EntityManager& entityManager, ecs::ComponentManager& componentManager)
+void rtype::systems::RenderWindowSys::render(ecs::EntityManager &entityManager, ecs::ComponentManager &componentManager)
 {
     if (IS_SERVER)
         return;
@@ -42,7 +42,14 @@ void rtype::systems::RenderWindowSys::render(const ecs::EntityManager& entityMan
         auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
         if (!renderWindow)
             continue;
-        // TODO: insert the get Event here ?
+        sf::Event event{};
+        while (renderWindow->window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                renderWindow->window->close();
+                return;
+            }
+            rtype::systems::InputSystem::handleInput(entityManager, componentManager, event);
+        }
         auto sortedEntities = getEntitiesSortedByZIndex(entityManager, componentManager);
 
         for (auto e : sortedEntities) {
