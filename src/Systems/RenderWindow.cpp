@@ -64,13 +64,10 @@ void rtype::systems::RenderWindowSys::createWindow(const ecs::EntityManager& ent
         const auto mode = componentManager.getComponent<rtype::components::Mode>(entity);
         const auto size = componentManager.getComponent<Size>(entity);
         const auto title = componentManager.getComponent<String>(entity);
-        const auto frameLimit = componentManager.getComponent<rtype::components::FrameLimit>(entity);
         const auto created = componentManager.getComponent<Created>(entity);
-        if (renderWindow && mode && size && title && frameLimit && !created->isCreate) {
-            const int width = static_cast<int>(size->width);
-            const int height = static_cast<int>(size->height);
-            renderWindow->window->create(sf::VideoMode(width, height), title->s, mode->style.style);
-            renderWindow->window->setFramerateLimit(frameLimit->limit);
+        if (renderWindow && mode && size && title && !created->isCreate) {
+            renderWindow->window->create(mode->mode, title->s, mode->style.style);
+            renderWindow->window->setFramerateLimit(mode->limit);
             created->isCreate = true;
             componentManager.addComponent<Created>(entity, *created);
         }

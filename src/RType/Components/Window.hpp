@@ -32,10 +32,6 @@ namespace rtype::components
     {
         sf::VideoMode mode;
         Style style;
-    };
-
-    struct FrameLimit
-    {
         unsigned int limit = 60;
     };
 
@@ -48,7 +44,6 @@ namespace rtype::components
             const String &title,
             const RWindow& renderWindow,
             Mode mode,
-            FrameLimit frameLimit,
             Sprite &backgroundSprite
             );
 

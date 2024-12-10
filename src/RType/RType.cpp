@@ -34,7 +34,6 @@ int rtype::RType::run() {
         {"RType"},
         renderWindow,
         mode,
-        {60},
         sprite1
         );
 

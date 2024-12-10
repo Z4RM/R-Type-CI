@@ -14,7 +14,6 @@ rtype::components::Window::Window(
     const String& title,
     const RWindow& renderWindow,
     Mode mode,
-    const FrameLimit frameLimit,
     Sprite& backgroundSprite
     )
 {
@@ -27,6 +26,9 @@ rtype::components::Window::Window(
         + mode.style.fullScreen * sf::Style::Fullscreen
         + mode.style.defaults * sf::Style::Default;
     mode.style.style = style;
+    const int width = static_cast<int>(size.width);
+    const int height = static_cast<int>(size.height);
+    mode.mode = sf::VideoMode(width, height);
     backgroundSprite.texture = new sf::Texture();
     backgroundSprite.sprite = new sf::Sprite();
     backgroundSprite.texture->loadFromFile(backgroundSprite.path);
@@ -40,7 +42,6 @@ rtype::components::Window::Window(
     componentManager.addComponent<String>(_id, title);
     componentManager.addComponent<RWindow>(_id, renderWindow);
     componentManager.addComponent<Mode>(_id, mode);
-    componentManager.addComponent<FrameLimit>(_id, frameLimit);
     componentManager.addComponent<Sprite>(_id, backgroundSprite);
     componentManager.addComponent<Created>(_id, Created{false});
 }
