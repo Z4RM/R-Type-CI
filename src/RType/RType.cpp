@@ -38,7 +38,7 @@ int rtype::RType::run() {
         sprite1
         );
 
-    Sprite sprite2 = {{0, 0, 0}, {64, 64}, "sprites/r-typesheet42.gif", {0}};
+    Sprite sprite2 = {{100, 100, 0}, {33, 17}, "sprites/players.gif", {0}};
     rtype::components::Player player(
         entityManager,
         componentManager,

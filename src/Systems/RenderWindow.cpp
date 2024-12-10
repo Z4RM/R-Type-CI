@@ -42,6 +42,7 @@ void rtype::systems::RenderWindowSys::render(const ecs::EntityManager& entityMan
         auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
         if (!renderWindow)
             continue;
+        // TODO: insert the get Event here ?
         auto sortedEntities = getEntitiesSortedByZIndex(entityManager, componentManager);
 
         for (auto e : sortedEntities) {

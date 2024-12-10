@@ -21,13 +21,13 @@ rtype::components::Player::Player(
     _id = entityManager.createEntity();
     sprite.texture = new sf::Texture();
     sprite.sprite = new sf::Sprite();
-    sprite.texture->loadFromFile(sprite.path);
+    const int width = static_cast<int>(sprite.size.width);
+    const int height = static_cast<int>(sprite.size.height);
+    const sf::IntRect rect(0, 0, width, height);
+    sprite.texture->loadFromFile(sprite.path, rect);
     sprite.sprite->setTexture(*sprite.texture);
     sprite.sprite->setPosition({pos.x, pos.y});
-    sprite.sprite->setScale(
-        size.width / sprite.sprite->getGlobalBounds().width,
-        size.height / sprite.sprite->getGlobalBounds().height
-    );
+    sprite.sprite->setScale(2, 2);
     componentManager.addComponent<Position>(_id, pos);
     componentManager.addComponent<Velocity>(_id, vel);
     componentManager.addComponent<Size>(_id, size);
