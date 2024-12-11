@@ -36,8 +36,6 @@ std::vector<rtype::ecs::Entity> getEntitiesSortedByZIndex(
 
 void rtype::systems::RenderWindowSys::render(ecs::EntityManager &entityManager, ecs::ComponentManager &componentManager)
 {
-    if (IS_SERVER)
-        return;
     for (const auto& entity : entityManager.getEntities()) {
         auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
         if (!renderWindow)
@@ -64,8 +62,6 @@ void rtype::systems::RenderWindowSys::render(ecs::EntityManager &entityManager, 
 
 void rtype::systems::RenderWindowSys::createWindow(const ecs::EntityManager& entityManager, ecs::ComponentManager& componentManager)
 {
-    if (IS_SERVER)
-        return;
     for (const auto& entity : entityManager.getEntities()) {
         const auto renderWindow = componentManager.getComponent<rtype::components::RWindow>(entity);
         const auto mode = componentManager.getComponent<rtype::components::Mode>(entity);
