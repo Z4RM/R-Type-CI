@@ -10,7 +10,7 @@
 
 #include "ECS.hpp"
 #include "RType/Components/InputHandler.hpp"
-#ifdef RTYPE_IS_CLIENT
+
 #include <SFML/Window/Event.hpp>
 
 namespace rtype::systems {
@@ -44,7 +44,5 @@ namespace rtype::systems {
         static void handleInput(ecs::EntityManager &entityManager, ecs::ComponentManager &componentManager, const sf::Event &event);
     };
 }
-
-#endif
 
 #endif //INPUTSYSTEM_HPP

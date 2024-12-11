@@ -18,7 +18,6 @@
 
 #include <functional>
 #include <unordered_map>
-#ifdef RTYPE_IS_CLIENT
 #include <SFML/Window/Keyboard.hpp>
 
 namespace rtype::components {
@@ -41,7 +40,5 @@ namespace rtype::components {
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> keyActions;
     };
 }
-
-#endif
 
 #endif //INPUTHANDLER_HPP

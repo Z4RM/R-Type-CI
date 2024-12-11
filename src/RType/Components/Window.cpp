@@ -7,7 +7,6 @@
 
 #include "Window.hpp"
 
-#ifdef RTYPE_IS_CLIENT
 rtype::components::Window::Window(
     rtype::ecs::EntityManager& entityManager,
     rtype::ecs::ComponentManager& componentManager,
@@ -46,4 +45,3 @@ rtype::components::Window::Window(
     componentManager.addComponent<Sprite>(_id, backgroundSprite);
     componentManager.addComponent<Created>(_id, Created{false});
 }
-#endif

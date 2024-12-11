@@ -14,6 +14,10 @@ include_directories(include src)
 
 set(CLIENT_SRC
         src/RType/Components/InputHandler.hpp
+        src/RType/Components/Window.cpp
+        src/RType/Components/Window.hpp
+        src/Systems/RenderWindow.cpp
+        src/Systems/RenderWindow.hpp
         src/Systems/InputSystem.cpp
         src/Systems/InputSystem.hpp
 )
@@ -32,12 +36,8 @@ set(RTYPE_SRC
         src/RType/Config/Config.hpp
         src/RType/ModeManager/ModeManager.cpp
         src/RType/ModeManager/ModeManager.hpp
-        src/RType/Components/Window.cpp
-        src/RType/Components/Window.hpp
         src/Systems/Movement.cpp
         src/Systems/Movement.hpp
-        src/Systems/RenderWindow.cpp
-        src/Systems/RenderWindow.hpp
 )
 
 set(RTYPE_HEADERS
