@@ -41,6 +41,7 @@ build/
 ### CMake / Conan
 
 # CMake generated files
+CMakeUserPresets.json
 CMakeUserPresets.json.user
 
 # Conan build information
