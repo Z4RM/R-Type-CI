@@ -29,6 +29,8 @@ set(RTYPE_SRC
         src/RType/ModeManager/ModeManager.hpp
         src/Systems/Movement.cpp
         src/Systems/Movement.hpp
+        src/RType/Server/Network/UDPServer/UDPServer.cpp
+        src/RType/Server/Network/UDPServer/UDPServer.hpp
 )
 
 set(RTYPE_HEADERS
