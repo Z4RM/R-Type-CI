@@ -25,6 +25,29 @@ namespace rtype {
          */
         using LogLevels = std::unordered_map<std::string, spdlog::level::level_enum>;
 
+        /**
+         * @brief Network configuration keys.
+         *
+         * @see `config.ini.example`
+         */
+        struct Network {
+            /**
+             * @brief The server configuration.
+             */
+            struct {
+#ifdef RTYPE_IS_CLIENT
+                /**
+                 * @brief The address of the server.
+                 */
+                std::string address;
+#endif
+                /**
+                 * @brief The port of the server.
+                 */
+                ushort port;
+            } server;
+        };
+
     public:
         /**
          * @brief Get the singleton instance of Config.
@@ -53,6 +76,11 @@ namespace rtype {
             return _valid;
         }
 
+        /**
+         * @return The network configuration.
+         */
+        [[nodiscard]] Network getNetwork() const;
+
         //region Delete copy and move constructors to ensure singleton integrity
         Config(const Config &) = delete;
 
@@ -80,7 +108,14 @@ namespace rtype {
         static void _setLogLevel(const INIReader &reader);
 
         /**
-         * @brief Map containing the log levels.
+         * @brief Get, validate and store the network configuration values.
+         *
+         * @param reader The INIReader where to get the configuration value from.
+         */
+        void _initializeNetwork(const INIReader &reader);
+
+        /**
+         * @var Map containing the log levels.
          * It permits to get the spdlog level value from its name (as string).
          */
         static const LogLevels _logLevels;
@@ -90,6 +125,13 @@ namespace rtype {
          * Used (returned) by `initialize`.
          */
         static bool _valid;
+
+        /**
+         * @var The network configuration.
+         *
+         * @see Network
+         */
+        Network _network;
     };
 }
 
