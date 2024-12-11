@@ -34,6 +34,7 @@ std::vector<rtype::ecs::Entity> getEntitiesSortedByZIndex(
     return renderableEntities;
 }
 
+#ifdef RTYPE_IS_CLIENT
 void rtype::systems::RenderWindowSys::render(ecs::EntityManager &entityManager, ecs::ComponentManager &componentManager)
 {
     for (const auto& entity : entityManager.getEntities()) {
@@ -76,3 +77,4 @@ void rtype::systems::RenderWindowSys::createWindow(const ecs::EntityManager& ent
         }
     }
 }
+#endif

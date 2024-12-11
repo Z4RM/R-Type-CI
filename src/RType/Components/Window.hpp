@@ -6,6 +6,7 @@
 */
 
 #pragma once
+#ifdef RTYPE_IS_CLIENT
 #include <SFML/Graphics.hpp>
 #include "ECS.hpp"
 #include "Structures.hpp"
@@ -113,3 +114,4 @@ namespace rtype::components
         size_t _id;
     };
 }
+#endif

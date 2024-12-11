@@ -10,7 +10,9 @@
 
 #pragma once
 #include <string>
+#ifdef RTYPE_IS_CLIENT
 #include <SFML/Graphics.hpp>
+#endif
 
 struct Position
 {
@@ -48,17 +50,6 @@ struct ZIndex
     int value;
 };
 
-struct Sprite
-{
-    Position pos;
-    Size size;
-    std::string path;
-    ZIndex priority;
-    sf::Texture* texture;
-    sf::Sprite* sprite;
-    Created created;
-};
-
 struct Animation
 {
     std::string path;
@@ -70,5 +61,29 @@ struct String
 {
     std::string s;
 };
+
+#ifdef RTYPE_IS_CLIENT
+struct Sprite
+{
+    Position pos;
+    Size size;
+    std::string path;
+    ZIndex priority;
+    sf::Texture* texture;
+    sf::Sprite* sprite;
+    Created created;
+};
+#endif
+
+#ifdef RTYPE_IS_SERVER
+struct Sprite
+{
+    Position pos;
+    Size size;
+    std::string path;
+    ZIndex priority;
+    Created created;
+};
+#endif
 
 #endif //STRUCTURE_HPP

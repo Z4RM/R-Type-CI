@@ -12,13 +12,18 @@ find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 
 include_directories(include src)
 
+set(CLIENT_SRC
+        src/RType/Components/InputHandler.hpp
+        src/Systems/InputSystem.cpp
+        src/Systems/InputSystem.hpp
+)
+
 set(RTYPE_SRC
         src/main.cpp
         src/ECS/ComponentManager.hpp
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
-        src/RType/Components/InputHandler.hpp
         src/RType/Components/Player.cpp
         src/RType/Components/Player.hpp
         src/RType/RType.cpp
@@ -33,8 +38,6 @@ set(RTYPE_SRC
         src/Systems/Movement.hpp
         src/Systems/RenderWindow.cpp
         src/Systems/RenderWindow.hpp
-        src/Systems/InputSystem.cpp
-        src/Systems/InputSystem.hpp
 )
 
 set(RTYPE_HEADERS
@@ -52,7 +55,7 @@ target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
 #endregion
 
 #region Client
-add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
+add_executable(r-type_client ${RTYPE_SRC} ${CLIENT_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
 
