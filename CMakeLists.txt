@@ -56,5 +56,5 @@ add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
 
-target_link_libraries(r-type_client sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
+target_link_libraries(r-type_client sfml-system sfml-window sfml-graphics sfml-audio)
 #endregion
