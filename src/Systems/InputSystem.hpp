@@ -27,8 +27,12 @@ namespace rtype::systems {
         /**
          * @brief Handles the input event and triggers actions for entities.
          *
-         * This static function processes input events and triggers the associated
-         * actions for entities that have an `InputHandler` component.
+         * This function handles input events, specifically key presses, and invokes
+         * the corresponding actions defined in the `InputHandler` components of entities.
+         *
+         * It iterates through all the entities, checks for an `InputHandler` component,
+         * and, if the key pressed corresponds to an action in the component, triggers
+         * that action.
          *
          * @param entityManager A reference to the entity manager, used to access
          *        the entities in the game.
