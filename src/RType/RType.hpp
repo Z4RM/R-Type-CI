@@ -8,16 +8,21 @@
 #ifndef RTYPE_RTYPE_HPP_
 #define RTYPE_RTYPE_HPP_
 
+#include "Server/Network/UDPServer/UDPServer.hpp"
+#ifdef RTYPE_IS_CLIENT
+#include "Client/Client.hpp"
+#endif
+
 namespace rtype {
     /**
      * @class RType
      *
-     * @brief The main class of the R-Type, containing, among others, the entry points.
+     * @brief The main class of the R-Type, containing, among others, the entrypoint.
      */
     class RType {
     public:
         /**
-         * @brief The entry point of the R-Type.
+         * @brief The entrypoint of the R-Type.
          * Should be the only statement in the program main function, used as is:
          * ```cpp
          * #include "RType/RType.hpp"
@@ -30,6 +35,35 @@ namespace rtype {
          * @return The exit status of the program.
          */
         static int run();
+
+#ifdef RTYPE_IS_CLIENT
+        // TODO: documentation
+        void startServer();
+
+        // TODO: documentation
+        void stopServer();
+#endif
+
+    private:
+        // TODO: documentation
+        RType(ushort port);
+
+        // TODO: documentation
+        int _run();
+
+        // TODO: documentation
+        bool _running();
+
+        // TODO: documentation
+        ushort _port;
+
+        // TODO: documentation
+        server::network::UDPServer _server;
+
+#ifdef RTYPE_IS_CLIENT
+        // TODO: documentation
+        Client _client;
+#endif
     };
 }
 
