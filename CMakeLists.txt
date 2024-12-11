@@ -8,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 find_package(inih REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(asio REQUIRED)
 find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 
 include_directories(include src)
@@ -36,7 +37,7 @@ set(RTYPE_HEADERS
         include/Systems.hpp
 )
 
-link_libraries(inih::inireader spdlog::spdlog)
+link_libraries(inih::inireader spdlog::spdlog asio::asio)
 
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
