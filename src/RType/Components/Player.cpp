@@ -7,17 +7,19 @@
 
 #include "Player.hpp"
 
-#include <utility>
+#include "RType/ModeManager/ModeManager.hpp"
+
+#ifdef RTYPE_IS_CLIENT
 
 rtype::components::Player::Player(
-    rtype::ecs::EntityManager& entityManager,
-    rtype::ecs::ComponentManager& componentManager,
-    const Position pos,
-    const Velocity vel,
-    const Size size,
-    Sprite& sprite,
-    const Animation& animation)
-{
+        rtype::ecs::EntityManager &entityManager,
+        rtype::ecs::ComponentManager &componentManager,
+        const Position pos,
+        const Velocity vel,
+        const Size size,
+        Sprite &sprite,
+        const Animation &animation
+) {
     _id = entityManager.createEntity();
     sprite.texture = new sf::Texture();
     sprite.sprite = new sf::Sprite();
@@ -28,10 +30,28 @@ rtype::components::Player::Player(
     sprite.sprite->setTexture(*sprite.texture);
     sprite.sprite->setPosition({pos.x, pos.y});
     sprite.sprite->setScale(2, 2);
+    componentManager.addComponent<Sprite>(_id, sprite);
+    componentManager.addComponent<Animation>(_id, animation);
     componentManager.addComponent<Position>(_id, pos);
     componentManager.addComponent<Velocity>(_id, vel);
     componentManager.addComponent<Size>(_id, size);
     componentManager.addComponent<Hitbox>(_id, {pos, size});
-    componentManager.addComponent<Sprite>(_id, sprite);
-    componentManager.addComponent<Animation>(_id, animation);
 }
+
+#else
+
+rtype::components::Player::Player(
+        rtype::ecs::EntityManager &entityManager,
+        rtype::ecs::ComponentManager &componentManager,
+        const Position pos,
+        const Velocity vel,
+        const Size size
+) {
+    _id = entityManager.createEntity();
+    componentManager.addComponent<Position>(_id, pos);
+    componentManager.addComponent<Velocity>(_id, vel);
+    componentManager.addComponent<Size>(_id, size);
+    componentManager.addComponent<Hitbox>(_id, {pos, size});
+}
+
+#endif

@@ -14,6 +14,11 @@ namespace rtype {
      *
      * @brief The main class of the R-Type, containing, among others, the entry points.
      */
+
+    struct IsActive {
+        bool active;
+    };
+
     class RType {
     public:
         /**

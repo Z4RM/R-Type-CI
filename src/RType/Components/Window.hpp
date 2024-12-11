@@ -6,6 +6,7 @@
 */
 
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "ECS.hpp"
 #include "Structures.hpp"

@@ -10,6 +10,7 @@
 #include "ECS.hpp"
 #include "Systems.hpp"
 #include "Components/Player.hpp"
+#include "ModeManager/ModeManager.hpp"
 
 int rtype::RType::run() {
     Config::initialize();
@@ -18,25 +19,29 @@ int rtype::RType::run() {
     ecs::ComponentManager componentManager;
     ecs::SystemManager systemManager(entityManager, componentManager);
 
-    systemManager.addSystem(rtype::systems::RenderWindowSys::createWindow);
+    size_t rtype = entityManager.createEntity();
+    componentManager.addComponent<IsActive>(rtype, {true});
+    #ifdef RTYPE_IS_CLIENT
+        systemManager.addSystem(rtype::systems::RenderWindowSys::createWindow);
+        String title;
+        title.s = "RType";
+        rtype::components::RWindow renderWindow;
+        rtype::components::Mode mode;
+        mode.style.style = sf::Style::Default;
+        Sprite sprite1 = {{0, 0, 0}, {800, 600}, "sprites/background.jpg", {-1}};
+        rtype::components::Window window(
+            entityManager,
+            componentManager,
+            {800, 600},
+            {"RType"},
+            renderWindow,
+            mode,
+            sprite1
+            );
     systemManager.addSystem(rtype::systems::RenderWindowSys::render);
+    #endif
 
-    String title;
-    title.s = "RType";
-    rtype::components::RWindow renderWindow;
-    rtype::components::Mode mode;
-    mode.style.style = sf::Style::Default;
-    Sprite sprite1 = {{0, 0, 0}, {800, 600}, "sprites/background.jpg", {-1}};
-    rtype::components::Window window(
-        entityManager,
-        componentManager,
-        {800, 600},
-        {"RType"},
-        renderWindow,
-        mode,
-        sprite1
-        );
-
+#ifdef RTYPE_IS_CLIENT
     Sprite sprite2 = {{100, 100, 0}, {33, 17}, "sprites/players.gif", {0}};
     rtype::components::Player player(
         entityManager,
@@ -47,8 +52,18 @@ int rtype::RType::run() {
         sprite2,
         {"", 0, 0}
         );
+#else
+    rtype::components::Player player(
+        entityManager,
+        componentManager,
+        {0, 0, 0},
+        {0, 0, 0},
+        {64, 64}
+        );
+#endif
 
-    while (1) {
+    while (componentManager.getComponent<IsActive>(rtype)->active) {
         systemManager.updateSystems();
     }
+    return 0;
 }

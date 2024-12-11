@@ -10,6 +10,7 @@
 
 #include "ECS.hpp"
 #include "RType/Components/InputHandler.hpp"
+
 #include <SFML/Window/Event.hpp>
 
 namespace rtype::systems {
