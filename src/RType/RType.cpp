@@ -12,10 +12,6 @@
 #include "Components/Player.hpp"
 #include "ModeManager/ModeManager.hpp"
 
-struct IsActive {
-    bool active;
-};
-
 int rtype::RType::run() {
     Config::initialize();
 
@@ -60,4 +56,5 @@ int rtype::RType::run() {
     while (componentManager.getComponent<IsActive>(rtype)->active) {
         systemManager.updateSystems();
     }
+    return 0;
 }
