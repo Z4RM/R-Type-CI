@@ -6,6 +6,7 @@
 */
 
 #pragma once
+
 #include "Structures.hpp"
 #include "ECS.hpp"
 
@@ -15,10 +16,11 @@
  *
  * This class encapsulates the player entity and its associated components in the ECS architecture.
  */
-namespace rtype::components
-{
+namespace rtype::components {
     class Player {
     public:
+#ifdef RTYPE_IS_CLIENT
+
         /**
          * @brief Constructs a new Player object.
          *
@@ -46,13 +48,16 @@ namespace rtype::components
          *        - frameRate: The frame rate of the animation.
          */
         Player(
-            rtype::ecs::EntityManager& entityManager,
-            rtype::ecs::ComponentManager& componentManager,
-            Position pos,
-            Velocity vel,
-            Size size,
-            Sprite& sprite,
-            const Animation& animation);
+                rtype::ecs::EntityManager &entityManager,
+                rtype::ecs::ComponentManager &componentManager,
+                Position pos,
+                Velocity vel,
+                Size size,
+                Sprite &sprite,
+                const Animation &animation
+        );
+
+#else
 
         /**
          * @brief Constructs a new Player object.
@@ -73,11 +78,14 @@ namespace rtype::components
          *        - height: The height of the player.
          */
         Player(
-            rtype::ecs::EntityManager& entityManager,
-            rtype::ecs::ComponentManager& componentManager,
-            Position pos,
-            Velocity vel,
-            Size size);
+                rtype::ecs::EntityManager &entityManager,
+                rtype::ecs::ComponentManager &componentManager,
+                Position pos,
+                Velocity vel,
+                Size size
+        );
+
+#endif
 
         /**
          * @brief Default destructor.

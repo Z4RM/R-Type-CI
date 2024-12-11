@@ -75,15 +75,4 @@ struct Sprite
 };
 #endif
 
-#ifdef RTYPE_IS_SERVER
-struct Sprite
-{
-    Position pos;
-    Size size;
-    std::string path;
-    ZIndex priority;
-    Created created;
-};
-#endif
-
 #endif //STRUCTURE_HPP
