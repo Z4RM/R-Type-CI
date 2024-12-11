@@ -33,6 +33,11 @@ set(RTYPE_SRC
         src/RType/Server/Network/UDPServer/UDPServer.hpp
 )
 
+set(RTYPE_SRC_CLIENT
+        src/RType/Client/Client.cpp
+        src/RType/Client/Client.hpp
+)
+
 set(RTYPE_HEADERS
         include/Structures.hpp
         include/ECS.hpp
@@ -48,7 +53,7 @@ target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
 #endregion
 
 #region Client
-add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_HEADERS})
+add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_SRC_CLIENT} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
 #endregion
