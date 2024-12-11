@@ -37,3 +37,18 @@ rtype::components::Player::Player(
     componentManager.addComponent<Size>(_id, size);
     componentManager.addComponent<Hitbox>(_id, {pos, size});
 }
+
+
+rtype::components::Player::Player(
+    rtype::ecs::EntityManager& entityManager,
+    rtype::ecs::ComponentManager& componentManager,
+    const Position pos,
+    const Velocity vel,
+    const Size size)
+{
+    _id = entityManager.createEntity();
+    componentManager.addComponent<Position>(_id, pos);
+    componentManager.addComponent<Velocity>(_id, vel);
+    componentManager.addComponent<Size>(_id, size);
+    componentManager.addComponent<Hitbox>(_id, {pos, size});
+}

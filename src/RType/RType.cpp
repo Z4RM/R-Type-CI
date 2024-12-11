@@ -41,6 +41,7 @@ int rtype::RType::run() {
     systemManager.addSystem(rtype::systems::RenderWindowSys::render);
     #endif
 
+#ifdef RTYPE_IS_CLIENT
     Sprite sprite2 = {{100, 100, 0}, {33, 17}, "sprites/players.gif", {0}};
     rtype::components::Player player(
         entityManager,
@@ -51,7 +52,15 @@ int rtype::RType::run() {
         sprite2,
         {"", 0, 0}
         );
-
+#else
+    rtype::components::Player player(
+        entityManager,
+        componentManager,
+        {0, 0, 0},
+        {0, 0, 0},
+        {64, 64}
+        );
+#endif
 
     while (componentManager.getComponent<IsActive>(rtype)->active) {
         systemManager.updateSystems();

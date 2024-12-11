@@ -55,6 +55,31 @@ namespace rtype::components
             const Animation& animation);
 
         /**
+         * @brief Constructs a new Player object.
+         *
+         * Initializes a player entity with its components in the ECS (Entity-Component-System) architecture.
+         *
+         * @param entityManager The entity manager responsible for handling entities.
+         * @param componentManager The component manager responsible for handling components.
+         * @param pos The initial position of the player.
+         *        - x: The x-coordinate in the game world.
+         *        - y: The y-coordinate in the game world.
+         *        - z: The z-coordinate (depth) in the game world.
+         * @param vel The initial velocity of the player.
+         *        - x: Horizontal velocity of the player.
+         *        - y: Vertical velocity of the player.
+         * @param size The size of the player.
+         *        - width: The width of the player.
+         *        - height: The height of the player.
+         */
+        Player(
+            rtype::ecs::EntityManager& entityManager,
+            rtype::ecs::ComponentManager& componentManager,
+            Position pos,
+            Velocity vel,
+            Size size);
+
+        /**
          * @brief Default destructor.
          *
          * Cleans up resources associated with the Player object.
