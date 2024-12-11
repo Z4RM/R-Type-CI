@@ -17,6 +17,8 @@ const rtype::Config::LogLevels rtype::Config::_logLevels = {
         {"off",      spdlog::level::off}
 };
 
+bool rtype::Config::_valid = true;
+
 rtype::Config::Config(const std::string &filename) {
     INIReader reader(filename);
 

@@ -42,12 +42,15 @@ namespace rtype {
 
         /**
          * @brief Alias for `getInstance` to simply initialize the class,
-         * without returning an instance of it.
+         * without returning an instance of it, but the success status of the initialization.
          *
          * @param filename Optional parameter to specify the configuration file from which the configuration should be read.
+         *
+         * @return `true` if all was initialized successfully, `false` otherwise.
          */
-        static void initialize(const std::string &filename = "config.ini") {
+        static bool initialize(const std::string &filename = "config.ini") {
             getInstance(filename);
+            return _valid;
         }
 
         //region Delete copy and move constructors to ensure singleton integrity
@@ -81,6 +84,12 @@ namespace rtype {
          * It permits to get the spdlog level value from its name (as string).
          */
         static const LogLevels _logLevels;
+
+        /**
+         * @var Whether the initialization is successful or not.
+         * Used (returned) by `initialize`.
+         */
+        static bool _valid;
     };
 }
 
