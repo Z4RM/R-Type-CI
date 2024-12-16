@@ -17,14 +17,17 @@ const rtype::Config::LogLevels rtype::Config::_logLevels = {
         {"off",      spdlog::level::off}
 };
 
+bool rtype::Config::_valid = true;
+
 rtype::Config::Config(const std::string &filename) {
     INIReader reader(filename);
 
     _setLogLevel(reader);
+    _initializeNetwork(reader);
 }
 
 void rtype::Config::_setLogLevel(const INIReader &reader) {
-    auto logLevel = reader.Get("log", "level", "");
+    auto logLevel = reader.GetString("log", "level", "");
 
     if (!logLevel.empty()) {
         if (_logLevels.find(logLevel) == _logLevels.end())
@@ -32,4 +35,24 @@ void rtype::Config::_setLogLevel(const INIReader &reader) {
         else
             spdlog::set_level(_logLevels.at(logLevel));
     }
+}
+
+void rtype::Config::_initializeNetwork(const INIReader &reader) {
+#ifdef RTYPE_IS_CLIENT
+    _network.server.address = reader.GetString("network", "server_address", "");
+    if (_network.server.address.empty())
+        spdlog::warn("No server address provided, you will be able to play only with a \"local server\"");
+#endif
+
+    auto port = reader.GetUnsigned("network", "server_port", 0);
+    if (port >= 1024 && port <= 65535) {
+        _network.server.port = port;
+    } else {
+        _valid = false;
+        spdlog::critical("Port must be provided and in the range [1024, 65535]");
+    }
+}
+
+rtype::Config::Network rtype::Config::getNetwork() const {
+    return _network;
 }

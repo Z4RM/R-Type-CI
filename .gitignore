@@ -8,6 +8,8 @@
 *.lo
 *.o
 *.obj
+*.ilk
+*.pdb
 
 # Precompiled Headers
 *.gch
@@ -41,6 +43,7 @@ build/
 ### CMake / Conan
 
 # CMake generated files
+CMakeUserPresets.json
 CMakeUserPresets.json.user
 
 # Conan build information

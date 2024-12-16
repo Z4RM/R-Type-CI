@@ -1,6 +1,15 @@
 ; This file is an example of the configuration used by the R-Type.
 ; To use it, copy it to "config.ini" and customize the configuration values.
 
+[network]
+; The address of the server to which the client will connect.
+; Can be omitted, but the client will be able to play only with a "local server" (mode in which the client is also a server).
+server_address=127.0.0.1
+
+; The port of the server on which it will start and on which the client will connect.
+; Must be in the range [1024, 65535]
+server_port=4242
+
 [log]
 ; The logging level
 ; trace    | Highly detailed logs for tracing program execution.

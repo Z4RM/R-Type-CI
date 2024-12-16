@@ -8,17 +8,16 @@
 #include "InputSystem.hpp"
 
 void rtype::systems::InputSystem::handleInput(ecs::EntityManager &entityManager, ecs::ComponentManager &componentManager, const sf::Event &event) {
-    if (event.type != sf::Event::KeyPressed)
-        return;
-
     const auto entities = entityManager.getEntities();
     for (const auto &entity : entities) {
         auto inputHandler = componentManager.getComponent<rtype::components::InputHandler>(entity);
         if (!inputHandler)
             continue;
 
-        auto action = inputHandler->keyActions.find(event.key.code);
-        if (action != inputHandler->keyActions.end())
-            action->second();
+        auto action = inputHandler->keyActions.equal_range(event.key.code);
+        for (auto& todo = action.first; todo != action.second; todo++) {
+            if (event.type == todo->second.first)
+                todo->second.second();
+        }
     }
 }
