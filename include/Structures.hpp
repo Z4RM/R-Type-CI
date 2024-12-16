@@ -10,6 +10,7 @@
 
 #pragma once
 #include <string>
+#include <unordered_map>
 #ifdef RTYPE_IS_CLIENT
 #include <SFML/Graphics.hpp>
 #endif

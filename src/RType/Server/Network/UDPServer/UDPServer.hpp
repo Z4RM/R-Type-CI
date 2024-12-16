@@ -26,7 +26,7 @@ namespace rtype::server::network {
         };
 
         // TODO: documentation
-        UDPServer(ushort port);
+        explicit UDPServer(unsigned short port);
 
         // TODO: documentation
         /**
@@ -45,7 +45,7 @@ namespace rtype::server::network {
         void _send();
 
         // TODO: documentation
-        ushort _port;
+        unsigned short _port;
 
         // TODO: documentation
         std::atomic<bool> _running = false;

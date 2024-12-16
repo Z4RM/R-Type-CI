@@ -10,7 +10,7 @@
 
 rtype::server::network::UDPServer::StartException::StartException() {}
 
-rtype::server::network::UDPServer::UDPServer(ushort port) : _port(port) {}
+rtype::server::network::UDPServer::UDPServer(unsigned short port) : _port(port) {}
 
 void rtype::server::network::UDPServer::start() {
     if (_running)

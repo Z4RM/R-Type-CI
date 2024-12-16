@@ -44,7 +44,7 @@ namespace rtype {
                 /**
                  * @brief The port of the server.
                  */
-                ushort port;
+                unsigned short port;
             } server;
         };
 

@@ -45,9 +45,9 @@ void rtype::RType::stopServer() {
 #endif
 
 #ifndef RTYPE_IS_CLIENT
-rtype::RType::RType(ushort port) : _port(port), _server(_port) {}
+rtype::RType::RType(unsigned short port) : _port(port), _server(_port) {}
 #else
-rtype::RType::RType(ushort port) : _port(port), _server(_port), _client(this) {}
+rtype::RType::RType(unsigned short port) : _port(port), _server(_port), _client(this) {}
 #endif
 
 int rtype::RType::_run() {
