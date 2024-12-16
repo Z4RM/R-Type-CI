@@ -33,10 +33,10 @@ namespace rtype::components {
      */
     struct InputHandler {
         /**
-         * @brief A map associating keyboard keys with actions.
+         * @brief A multimap associating keyboard keys with actions.
          *
          * Each key in the map corresponds to an `sf::Keyboard::Key`, and each action
-         * is represented as a `std::function<void()>`. This allows flexible handling
+         * is represented as a pair of `sf::Event::EventType` `std::function<void()>`. This allows flexible handling
          * of key presses, binding specific functions to them.
          */
         std::unordered_multimap<sf::Keyboard::Key, std::pair<sf::Event::EventType, std::function<void()>>> keyActions;
