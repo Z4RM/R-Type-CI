@@ -99,7 +99,7 @@ namespace rtype::server::network {
             return;
         std::string received = _packetsToHandle.front();
         spdlog::info(" Message received: {}", received);
-        std::string message = "Error: Bad request";
+        std::string message = "";
 
         if (received == "CONNECT") {
             message = "OK";
