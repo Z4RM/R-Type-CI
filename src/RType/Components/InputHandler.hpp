@@ -18,6 +18,8 @@
 
 #include <functional>
 #include <unordered_map>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 namespace rtype::components {
@@ -37,7 +39,7 @@ namespace rtype::components {
          * is represented as a `std::function<void()>`. This allows flexible handling
          * of key presses, binding specific functions to them.
          */
-        std::unordered_map<sf::Keyboard::Key, std::function<void()>> keyActions;
+        std::unordered_multimap<sf::Keyboard::Key, std::pair<sf::Event::EventType, std::function<void()>>> keyActions;
     };
 }
 

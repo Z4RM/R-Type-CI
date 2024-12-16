@@ -62,6 +62,10 @@ struct String
     std::string s;
 };
 
+struct IA {
+    std::unordered_map<float, Velocity> moves;
+};
+
 #ifdef RTYPE_IS_CLIENT
 struct Sprite
 {
