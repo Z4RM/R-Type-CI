@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.28)
 
 project(RType VERSION 0.0.1 LANGUAGES CXX)
 
@@ -19,6 +19,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
+        src/RType/Components/Enemy.cpp
+        src/RType/Components/Enemy.hpp
         src/RType/Components/Player.cpp
         src/RType/Components/Player.hpp
         src/RType/RType.cpp

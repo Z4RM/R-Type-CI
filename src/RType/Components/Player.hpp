@@ -9,6 +9,9 @@
 
 #include "Structures.hpp"
 #include "ECS.hpp"
+#ifdef RTYPE_IS_CLIENT
+#include "InputHandler.hpp"
+#endif
 
 /**
  * @class Player
@@ -101,10 +104,16 @@ namespace rtype::components {
          */
         [[nodiscard]] size_t getId() const { return _id; };
 
+    void move(Position pos);
+
     private:
         /**
          * @brief The unique identifier for the player entity.
          */
         size_t _id;
+
+#ifdef RTYPE_IS_CLIENT
+        InputHandler _inputs;
+#endif
     };
 }

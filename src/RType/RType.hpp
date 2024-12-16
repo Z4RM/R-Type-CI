@@ -46,7 +46,7 @@ namespace rtype {
 
     private:
         // TODO: documentation
-        RType(ushort port);
+        explicit RType(unsigned short port);
 
         // TODO: documentation
         int _run();
@@ -55,7 +55,7 @@ namespace rtype {
         bool _running();
 
         // TODO: documentation
-        ushort _port;
+        unsigned short _port;
 
         // TODO: documentation
         server::network::UDPServer _server;
