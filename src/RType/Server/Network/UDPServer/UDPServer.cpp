@@ -103,21 +103,25 @@ namespace rtype::server::network {
         if (received == "CONNECT") {
             message = "OK";
 
-            for (auto it = _clients.begin(); it != _clients.end(); ) {
-                asio::error_code ec;
+            for (auto it = _clients.begin(); it != _clients.end();) {
+                auto endpoint = it->first;
                 _socket->async_send_to(
                     asio::buffer(message),
-                    it->first,
-                    [&](std::error_code, std::size_t) {}
+                    endpoint,
+                    [&, it](std::error_code ec, std::size_t) mutable {
+                        if (ec) {
+                            spdlog::warn("Client at {} is no longer available: {}", endpoint.address().to_string(), ec.message());
+                            _clients.erase(it);
+                        }
+                    }
                 );
-
-                if (ec) {
-                    spdlog::warn("Client is no longer available and will be removed.");
-                    it = _clients.erase(it);
-                } else {
-                    ++it;
-                }
+                ++it;
             }
+
+        } else if (received == "OK") {
+            spdlog::info("Connected to the server successfully.");
+        } else {
+            spdlog::warn("Not connected to the server");
         }
         _packetsToHandle.pop();
     }
@@ -129,6 +133,7 @@ namespace rtype::server::network {
     }
 
     //TODO: add timeout for connection
+    //TODO: wait for connection logic
     void UDPServer::_connect(std::string &ip, ushort port) {
         try {
             if (!_socket.has_value() || !_socket->is_open()) {
@@ -147,22 +152,11 @@ namespace rtype::server::network {
                 return;
             }
 
-            char reply[1024];
-            size_t reply_length = _socket->receive_from(asio::buffer(reply), serverEndpoint, 0, ec);
+            //char reply[1024];
+            //size_t reply_length = _socket->receive_from(asio::buffer(reply), serverEndpoint, 0, ec);
 
-            if (ec) {
-                spdlog::error("Error on receive: {}", ec.message());
-                return;
-            }
-
-            std::string replyMessage(reply, reply_length);
-            spdlog::info("Received reply from server: {}", replyMessage);
-
-            if (replyMessage == "OK") {
-                spdlog::info("Connected to the server successfully.");
-            } else {
-                spdlog::warn("Failed to connect to the server.");
-            }
+            //std::string replyMessage(reply, reply_length);
+            //spdlog::info("Received reply from server: {}", replyMessage);
 
         } catch (const std::exception& e) {
             spdlog::error("Exception occurred: {}", e.what());
