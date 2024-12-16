@@ -8,19 +8,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 find_package(inih REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(asio REQUIRED)
 find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 
 include_directories(include src)
-
-set(CLIENT_SRC
-        src/RType/Components/InputHandler.hpp
-        src/RType/Components/Window.cpp
-        src/RType/Components/Window.hpp
-        src/Systems/RenderWindow.cpp
-        src/Systems/RenderWindow.hpp
-        src/Systems/InputSystem.cpp
-        src/Systems/InputSystem.hpp
-)
 
 set(RTYPE_SRC
         src/main.cpp
@@ -28,6 +19,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
+        src/RType/Components/Enemy.cpp
+        src/RType/Components/Enemy.hpp
         src/RType/Components/Player.cpp
         src/RType/Components/Player.hpp
         src/RType/RType.cpp
@@ -38,6 +31,20 @@ set(RTYPE_SRC
         src/RType/ModeManager/ModeManager.hpp
         src/Systems/Movement.cpp
         src/Systems/Movement.hpp
+        src/RType/Server/Network/UDPServer/UDPServer.cpp
+        src/RType/Server/Network/UDPServer/UDPServer.hpp
+)
+
+set(CLIENT_SRC
+        src/RType/Client/Client.cpp
+        src/RType/Client/Client.hpp
+        src/RType/Components/InputHandler.hpp
+        src/RType/Components/Window.cpp
+        src/RType/Components/Window.hpp
+        src/Systems/RenderWindow.cpp
+        src/Systems/RenderWindow.hpp
+        src/Systems/InputSystem.cpp
+        src/Systems/InputSystem.hpp
 )
 
 set(RTYPE_HEADERS
@@ -46,7 +53,7 @@ set(RTYPE_HEADERS
         include/Systems.hpp
 )
 
-link_libraries(inih::inireader spdlog::spdlog)
+link_libraries(inih::inireader spdlog::spdlog asio::asio)
 
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})

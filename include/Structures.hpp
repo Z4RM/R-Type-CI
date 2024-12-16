@@ -10,6 +10,7 @@
 
 #pragma once
 #include <string>
+#include <unordered_map>
 #ifdef RTYPE_IS_CLIENT
 #include <SFML/Graphics.hpp>
 #endif
@@ -60,6 +61,10 @@ struct Animation
 struct String
 {
     std::string s;
+};
+
+struct IA {
+    std::unordered_map<float, Velocity> moves;
 };
 
 #ifdef RTYPE_IS_CLIENT

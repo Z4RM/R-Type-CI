@@ -53,6 +53,9 @@ void rtype::systems::RenderWindowSys::render(ecs::EntityManager &entityManager, 
         for (auto e : sortedEntities) {
             auto sprite = componentManager.getComponent<Sprite>(e.id);
             if (sprite && sprite->sprite) {
+                auto pos = componentManager.getComponent<Position>(e.id);
+                if (pos)
+                    sprite->sprite->setPosition({pos->x, pos->y});
                 renderWindow->window->draw(*sprite->sprite);
             }
         }

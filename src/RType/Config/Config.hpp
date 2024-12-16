@@ -25,6 +25,29 @@ namespace rtype {
          */
         using LogLevels = std::unordered_map<std::string, spdlog::level::level_enum>;
 
+        /**
+         * @brief Network configuration keys.
+         *
+         * @see `config.ini.example`
+         */
+        struct Network {
+            /**
+             * @brief The server configuration.
+             */
+            struct {
+#ifdef RTYPE_IS_CLIENT
+                /**
+                 * @brief The address of the server.
+                 */
+                std::string address;
+#endif
+                /**
+                 * @brief The port of the server.
+                 */
+                unsigned short port;
+            } server;
+        };
+
     public:
         /**
          * @brief Get the singleton instance of Config.
@@ -42,13 +65,21 @@ namespace rtype {
 
         /**
          * @brief Alias for `getInstance` to simply initialize the class,
-         * without returning an instance of it.
+         * without returning an instance of it, but the success status of the initialization.
          *
          * @param filename Optional parameter to specify the configuration file from which the configuration should be read.
+         *
+         * @return `true` if all was initialized successfully, `false` otherwise.
          */
-        static void initialize(const std::string &filename = "config.ini") {
+        static bool initialize(const std::string &filename = "config.ini") {
             getInstance(filename);
+            return _valid;
         }
+
+        /**
+         * @return The network configuration.
+         */
+        [[nodiscard]] Network getNetwork() const;
 
         //region Delete copy and move constructors to ensure singleton integrity
         Config(const Config &) = delete;
@@ -77,10 +108,30 @@ namespace rtype {
         static void _setLogLevel(const INIReader &reader);
 
         /**
-         * @brief Map containing the log levels.
+         * @brief Get, validate and store the network configuration values.
+         *
+         * @param reader The INIReader where to get the configuration value from.
+         */
+        void _initializeNetwork(const INIReader &reader);
+
+        /**
+         * @var Map containing the log levels.
          * It permits to get the spdlog level value from its name (as string).
          */
         static const LogLevels _logLevels;
+
+        /**
+         * @var Whether the initialization is successful or not.
+         * Used (returned) by `initialize`.
+         */
+        static bool _valid;
+
+        /**
+         * @var The network configuration.
+         *
+         * @see Network
+         */
+        Network _network;
     };
 }
 
