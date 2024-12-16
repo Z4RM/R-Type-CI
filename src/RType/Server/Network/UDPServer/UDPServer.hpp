@@ -38,7 +38,7 @@ namespace rtype::server::network {
         static void initialize(ushort port) { getInstance(port); };
 
         // TODO: documentation
-        UDPServer(ushort port);
+        explicit UDPServer(unsigned short port);
 
         // TODO: documentation
         /**
@@ -57,7 +57,7 @@ namespace rtype::server::network {
         void _send();
 
         // TODO: documentation
-        ushort _port;
+        unsigned short _port;
 
         void _connect(std::string &ip, ushort port);
 

@@ -8,7 +8,6 @@
 #include "spdlog/spdlog.h"
 #include "UDPServer.hpp"
 
-
 namespace rtype::server::network {
     UDPServer::StartException::StartException() {}
 

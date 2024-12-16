@@ -36,6 +36,65 @@ rtype::components::Player::Player(
     componentManager.addComponent<Velocity>(_id, vel);
     componentManager.addComponent<Size>(_id, size);
     componentManager.addComponent<Hitbox>(_id, {pos, size});
+
+    // Press
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::Z,
+        {sf::Event::KeyPressed, [this, pos, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->y = -1;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::S,
+        {sf::Event::KeyPressed, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->y = 1;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::Q,
+        {sf::Event::KeyPressed, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->x = -1;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::D,
+        {sf::Event::KeyPressed, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->x = 1;
+        }}
+    });
+
+    // Release
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::Z,
+        {sf::Event::KeyReleased, [this, pos, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->y = 0;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::S,
+        {sf::Event::KeyReleased, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->y = 0;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::Q,
+        {sf::Event::KeyReleased, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->x = 0;
+        }}
+    });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::D,
+        {sf::Event::KeyReleased, [this, &componentManager]() {
+            componentManager.getComponent<Velocity>(_id)->x = 0;
+        }}
+    });
+    componentManager.addComponent<InputHandler>(_id, _inputs);
 }
 
 #else

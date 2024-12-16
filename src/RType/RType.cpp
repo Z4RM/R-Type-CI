@@ -8,6 +8,7 @@
 #include "ModeManager/ModeManager.hpp"
 #include "Config/Config.hpp"
 #include "ECS.hpp"
+#include "Components/Enemy.hpp"
 #include "Components/Player.hpp"
 #include "Systems.hpp"
 #include "RType.hpp"
@@ -45,12 +46,9 @@ void rtype::RType::stopServer() {
 #endif
 
 #ifndef RTYPE_IS_CLIENT
-rtype::RType::RType(ushort port) : _port(port), _server(_port) {
-};
+rtype::RType::RType(unsigned short port) : _port(port), _server(_port) {}
 #else
-rtype::RType::RType(ushort port) : _port(port), _server(_port), _client(this) {
-
-}
+rtype::RType::RType(unsigned short port) : _port(port), _server(_port), _client(this) {}
 #endif
 
 int rtype::RType::_run() {
@@ -66,7 +64,7 @@ int rtype::RType::_run() {
     rtype::components::RWindow renderWindow{};
     rtype::components::Mode mode;
     mode.style.style = sf::Style::Default;
-    Sprite sprite1 = {{0, 0, 0}, {800, 600}, "sprites/background.jpg", {-1}};
+    Sprite sprite1 = {{0, 0, 0}, {800, 600}, "assets/sprites/background.jpg", {-1}};
     rtype::components::Window window(
             entityManager,
             componentManager,
@@ -77,10 +75,8 @@ int rtype::RType::_run() {
             sprite1
     );
     systemManager.addSystem(rtype::systems::RenderWindowSys::render);
-#endif
 
-#ifdef RTYPE_IS_CLIENT
-    Sprite sprite2 = {{100, 100, 0}, {33, 17}, "sprites/players.gif", {0}};
+    Sprite sprite2 = {{100, 100, 0}, {33, 17}, "assets/sprites/players.gif", {0}};
     rtype::components::Player player(
             entityManager,
             componentManager,
@@ -90,6 +86,17 @@ int rtype::RType::_run() {
             sprite2,
             {"", 0, 0}
     );
+
+    Sprite sprite3 = {{600, 100, 0}, {33, 36}, "assets/sprites/enemy.gif", {1}};
+    rtype::components::Enemy enemy(
+        entityManager,
+        componentManager,
+        {600, 100, 0},
+        {0, 0, 0},
+        {64, 64},
+        sprite3,
+        {"", 0, 0}
+    );
 #else
     rtype::components::Player player(
         entityManager,
@@ -98,9 +105,17 @@ int rtype::RType::_run() {
         {0, 0, 0},
         {64, 64}
         );
+
+    rtype::components::Enemy enemy(
+        entityManager,
+        componentManager,
+        {600, 100, 0},
+        {0, 0, 0},
+        {64, 64}
+    );
 #endif
 
-
+  // TODO: use mode manager
 #ifdef RTYPE_IS_SERVER
     try {
         rtype::server::network::UDPServer::initialize(_port);
@@ -118,14 +133,11 @@ int rtype::RType::_run() {
     }
 #endif
 
-
-
+    systemManager.addSystem(rtype::systems::Movement::move);
     while (_running()) {
         systemManager.updateSystems();
 #ifdef RTYPE_IS_CLIENT
-        _client.iteration();
-#else
-
+        //_client.iteration();
 #endif
     }
     return 0;
