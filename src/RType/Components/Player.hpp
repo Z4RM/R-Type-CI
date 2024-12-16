@@ -9,8 +9,9 @@
 
 #include "Structures.hpp"
 #include "ECS.hpp"
+#ifdef RTYPE_IS_CLIENT
 #include "InputHandler.hpp"
-#include <iostream>
+#endif
 
 /**
  * @class Player
@@ -111,6 +112,8 @@ namespace rtype::components {
          */
         size_t _id;
 
+#ifdef RTYPE_IS_CLIENT
         InputHandler _inputs;
+#endif
     };
 }
