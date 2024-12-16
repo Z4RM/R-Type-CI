@@ -8,6 +8,7 @@
 #ifndef RTYPE_UDPSERVER_HPP_
 #define RTYPE_UDPSERVER_HPP_
 
+#include <list>
 #include <optional>
 #include <queue>
 #include "asio.hpp"
@@ -19,7 +20,7 @@ namespace rtype::server::network {
 
 
     struct ClientInfo {
-        std::string name;
+        asio::ip::udp::endpoint endpoint;
     };
 
     // TODO: documentation
@@ -53,8 +54,12 @@ namespace rtype::server::network {
         // TODO: refactor
         void _receive();
 
+        void _newPacket(std::size_t bytesReceived);
+
         // TODO: refactor
         void _send();
+
+        void _removeClient(asio::ip::udp::endpoint);
 
         // TODO: documentation
         unsigned short _port;
@@ -79,10 +84,11 @@ namespace rtype::server::network {
         // TODO: documentation
         std::array<char, BUFFER_SIZE> _buffer;
 
-        std::queue<std::string> _packetsToHandle{};
+        std::queue<std::pair<std::shared_ptr<ClientInfo>, std::string>> _packetsToSend{};
 
+        std::queue<std::pair<std::shared_ptr<ClientInfo>, std::string>> _packetsToHandle{};
 
-        std::unordered_map<asio::ip::udp::endpoint, ClientInfo> _clients;
+        std::list<ClientInfo> _clients;
 
     };
 }

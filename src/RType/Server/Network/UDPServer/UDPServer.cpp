@@ -21,9 +21,15 @@ namespace rtype::server::network {
 
         try {
             _ioContext.restart();
+        #ifdef RTYPE_IS_SERVER
             _socket = asio::ip::udp::socket(_ioContext, asio::ip::udp::endpoint(asio::ip::udp::v4(), _port));
-            _running = true;
             _receive();
+            _send();
+        #else
+            _socket = asio::ip::udp::socket(_ioContext, asio::ip::udp::endpoint(asio::ip::udp::v4(), 0));
+        #endif
+
+            _running = true;
 
             _thread = std::thread([this] {
                 try {
@@ -33,17 +39,18 @@ namespace rtype::server::network {
                 }
             });
 
-            spdlog::info("Server started and running on port {}", _port);
-
-            #ifdef RTYPE_IS_CLIENT
-                std::string serverIp = "127.0.0.1";
-                this->_connect(serverIp, 4343);
-            #endif
+            spdlog::info("Server started and running on port {}", _socket->local_endpoint().port());
 
         } catch (const std::exception& e) {
             spdlog::error("Failed to start UDP server: {}", e.what());
             throw StartException();
         }
+
+    #ifdef RTYPE_IS_CLIENT
+        std::string serverIp = "127.0.0.1";
+        this->_connect(serverIp, _port);
+    #endif
+
     }
 
     void UDPServer::stop() {
@@ -69,15 +76,7 @@ namespace rtype::server::network {
                     return;
 
                 if (!errorCode && bytesReceived > 0) {
-
-                    asio::ip::udp::endpoint senderEndpoint = *_endpoint;
-                    std::string received(_buffer.data(), bytesReceived);
-
-                    if (_clients.find(senderEndpoint) == _clients.end()) {
-                        _clients[senderEndpoint] = ClientInfo();
-                    }
-                    _packetsToHandle.emplace(received);
-                    _send();
+                    _newPacket(bytesReceived);
                 }
 
                 if (errorCode) {
@@ -89,41 +88,35 @@ namespace rtype::server::network {
                 }
 
                 _receive();
+                _send();
             }
         );
     }
 
     void UDPServer::_send() {
-        if (_packetsToHandle.empty())
+        if (_packetsToSend.empty())
             return;
-        std::string received = _packetsToHandle.front();
-        spdlog::info(" Message received: {}", received);
-        std::string message = "";
 
-        if (received == "CONNECT") {
-            message = "OK";
+        std::string to_send = _packetsToSend.front().second;
 
-            for (auto it = _clients.begin(); it != _clients.end();) {
-                auto endpoint = it->first;
-                _socket->async_send_to(
-                    asio::buffer(message),
-                    endpoint,
-                    [&, it](std::error_code ec, std::size_t) mutable {
-                        if (ec) {
-                            spdlog::warn("Client at {} is no longer available: {}", endpoint.address().to_string(), ec.message());
-                            _clients.erase(it);
-                        }
-                    }
-                );
-                ++it;
-            }
 
-        } else if (received == "OK") {
-            spdlog::info("Connected to the server successfully.");
-        } else {
-            spdlog::warn("Not connected to the server");
+        std::vector<asio::ip::udp::endpoint> clientsCopy;
+        for (const auto& client : _clients) {
+            clientsCopy.push_back(client.endpoint);
         }
-        _packetsToHandle.pop();
+
+        for (const auto& endpoint : clientsCopy) {
+            _socket->async_send_to(
+            asio::buffer(to_send),
+            endpoint,
+            [this, endpoint](std::error_code ec, std::size_t) mutable {
+                if (ec) {
+                    spdlog::warn("Client at {} is no longer available: {}", endpoint.address().to_string(), ec.message());
+                    _removeClient(endpoint);
+                }
+            });
+        }
+        _packetsToSend.pop();
     }
 
     UDPServer &UDPServer::getInstance(ushort port) {
@@ -152,14 +145,58 @@ namespace rtype::server::network {
                 return;
             }
 
-            //char reply[1024];
-            //size_t reply_length = _socket->receive_from(asio::buffer(reply), serverEndpoint, 0, ec);
+            char reply[1024];
+            size_t reply_length = _socket->receive_from(asio::buffer(reply), serverEndpoint, 0, ec);
 
-            //std::string replyMessage(reply, reply_length);
-            //spdlog::info("Received reply from server: {}", replyMessage);
+            std::string replyMessage(reply, reply_length);
+            spdlog::info("Received reply from server: {}", replyMessage);
 
         } catch (const std::exception& e) {
             spdlog::error("Exception occurred: {}", e.what());
+        }
+    }
+
+    void UDPServer::_newPacket(std::size_t bytesReceived) {
+        asio::ip::udp::endpoint senderEndpoint = *_endpoint;
+        std::string received(_buffer.data(), bytesReceived);
+
+        bool newClient = true;
+        std::shared_ptr<ClientInfo> info_ptr;
+        for (const auto& client : _clients) {
+            if (client.endpoint == senderEndpoint) {
+                newClient = false;
+            }
+        }
+        if (newClient) {
+            ClientInfo newInfo;
+            newInfo.endpoint = senderEndpoint;
+            _clients.emplace_back(newInfo);
+            info_ptr = std::make_shared<ClientInfo>(newInfo);
+        }
+
+        std::pair toHandle = {info_ptr, received};
+        _packetsToHandle.emplace(toHandle);
+
+        //TODO: maybe put this into a system
+        #ifndef RTYPE_IS_CLIENT
+            if (received == "CONNECT") {
+                std::pair<std::shared_ptr<ClientInfo>, std::string> toSend = {nullptr, "OK"};
+                this->_packetsToSend.emplace(toSend);
+            }
+        #endif
+
+    }
+
+    void UDPServer::_removeClient(asio::ip::udp::endpoint e) {
+        auto it = std::find_if(_clients.begin(), _clients.end(), [&](const ClientInfo& client) {
+            return client.endpoint == e;
+        });
+
+        if (it != _clients.end()) {
+            _clients.erase(it);
+            spdlog::info("Client at {} removed", e.address().to_string());
+        } else {
+            spdlog::warn("Client at {} not found", e.address().to_string());
         }
     }
 }
