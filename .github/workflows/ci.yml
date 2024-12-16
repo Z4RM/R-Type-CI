@@ -3,8 +3,19 @@ name: "R-Type CI"
 on:
   push:
 
+env:
+  EXECUTABLES: "zappy_server,zappy_client"
+
 jobs:
+  build:
+    name: "Build"
+    uses: "./.github/workflows/build.yml"
+    with:
+      EXECUTABLES: "${{ env.EXECUTABLES }}"
+
   common:
     name: "Common"
+    needs:
+      - "build"
     uses: "./.github/workflows/mirror.yml"
     secrets: inherit

@@ -1,0 +1,47 @@
+name: "R-Type Build"
+
+on:
+  workflow_call:
+    inputs:
+      EXECUTABLES:
+        description: "Coma-separated list of executables to check"
+        required: true
+        type: string
+
+env:
+  CONAN_VERSION: "2.10.2"
+
+jobs:
+  build:
+    name: "Test CMake and verify executables"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v4"
+
+      - name: Install Conan
+        uses: "turtlebrowser/get-conan@main"
+
+      - name: "Setup cmake"
+        uses: "jwlawson/actions-setup-cmake@v2"
+
+      - name: "Build executables"
+        run: ./build.sh
+
+      - name: "Verify executables"
+        timeout-minutes: 2
+        run: |
+          for executable in ${EXECUTABLES//,/ }; do
+            if [ ! -x "$executable" ]; then
+              echo "::error file=$executable,title=Executable problem::This executable does not exist or is not executable"
+              exit 1
+            fi
+          done
+
+      - name: "Check for un-encapsulated GLibC usage in executables"
+        timeout-minutes: 2
+        run: |
+          export PATH="$PATH:$(pwd)/.github/workflows/executables"
+          for executable in ${EXECUTABLES//,/ }; do
+            GLIBCHECKER_GH_ACTIONS="true" glib_checker "$executable"
+          done
