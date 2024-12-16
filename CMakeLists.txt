@@ -19,8 +19,8 @@ set(RTYPE_SRC
         src/ECS/EntityManager.hpp
         src/ECS/SparseSet.hpp
         src/ECS/SystemManager.hpp
-        src/Components/Player.cpp
-        src/Components/Player.hpp
+        src/RType/Components/Player.cpp
+        src/RType/Components/Player.hpp
         src/RType/RType.cpp
         src/RType/RType.hpp
         src/RType/Config/Config.cpp
@@ -33,9 +33,16 @@ set(RTYPE_SRC
         src/RType/Server/Network/UDPServer/UDPServer.hpp
 )
 
-set(RTYPE_SRC_CLIENT
+set(CLIENT_SRC
         src/RType/Client/Client.cpp
         src/RType/Client/Client.hpp
+        src/RType/Components/InputHandler.hpp
+        src/RType/Components/Window.cpp
+        src/RType/Components/Window.hpp
+        src/Systems/RenderWindow.cpp
+        src/Systems/RenderWindow.hpp
+        src/Systems/InputSystem.cpp
+        src/Systems/InputSystem.hpp
 )
 
 set(RTYPE_HEADERS
@@ -53,7 +60,9 @@ target_compile_definitions(r-type_server PRIVATE RTYPE_IS_SERVER)
 #endregion
 
 #region Client
-add_executable(r-type_client ${RTYPE_SRC} ${RTYPE_SRC_CLIENT} ${RTYPE_HEADERS})
+add_executable(r-type_client ${RTYPE_SRC} ${CLIENT_SRC} ${RTYPE_HEADERS})
 
 target_compile_definitions(r-type_client PRIVATE RTYPE_IS_CLIENT)
+
+target_link_libraries(r-type_client sfml-system sfml-window sfml-graphics sfml-audio)
 #endregion

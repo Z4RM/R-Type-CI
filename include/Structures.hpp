@@ -10,6 +10,9 @@
 
 #pragma once
 #include <string>
+#ifdef RTYPE_IS_CLIENT
+#include <SFML/Graphics.hpp>
+#endif
 
 struct Position
 {
@@ -37,11 +40,14 @@ struct Hitbox
     Size size;
 };
 
-struct Sprite
+struct Created
 {
-    Position pos;
-    Size size;
-    std::string path;
+    bool isCreate = false;
+};
+
+struct ZIndex
+{
+    int value;
 };
 
 struct Animation
@@ -50,5 +56,23 @@ struct Animation
     int nbFrames;
     int frameRate;
 };
+
+struct String
+{
+    std::string s;
+};
+
+#ifdef RTYPE_IS_CLIENT
+struct Sprite
+{
+    Position pos;
+    Size size;
+    std::string path;
+    ZIndex priority;
+    sf::Texture* texture;
+    sf::Sprite* sprite;
+    Created created;
+};
+#endif
 
 #endif //STRUCTURE_HPP
