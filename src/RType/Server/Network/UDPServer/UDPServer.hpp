@@ -9,14 +9,22 @@
 #define RTYPE_UDPSERVER_HPP_
 
 #include <optional>
+#include <queue>
 #include "asio.hpp"
 
 // TODO: documentation
 #define BUFFER_SIZE 1024
 
 namespace rtype::server::network {
+
+
+    struct ClientInfo {
+        std::string name;
+    };
+
     // TODO: documentation
     class UDPServer {
+
     public:
         // TODO: documentation
         class StartException : public std::exception {
@@ -24,6 +32,10 @@ namespace rtype::server::network {
             // TODO: documentation
             StartException();
         };
+
+        static UDPServer &getInstance(ushort port = 4242);
+
+        static void initialize(ushort port) { getInstance(port); };
 
         // TODO: documentation
         UDPServer(ushort port);
@@ -47,6 +59,8 @@ namespace rtype::server::network {
         // TODO: documentation
         ushort _port;
 
+        void _connect(std::string &ip, ushort port);
+
         // TODO: documentation
         std::atomic<bool> _running = false;
 
@@ -63,7 +77,13 @@ namespace rtype::server::network {
         std::thread _thread;
 
         // TODO: documentation
-        std::array<char, BUFFER_SIZE> _buffer{};
+        std::array<char, BUFFER_SIZE> _buffer;
+
+        std::queue<std::string> _packetsToHandle{};
+
+
+        std::unordered_map<asio::ip::udp::endpoint, ClientInfo> _clients;
+
     };
 }
 

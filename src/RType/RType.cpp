@@ -11,6 +11,7 @@
 #include "Components/Player.hpp"
 #include "Systems.hpp"
 #include "RType.hpp"
+#include "./Server/Network/UDPServer/UDPServer.hpp"
 
 int rtype::RType::run() {
     if (!Config::initialize())
@@ -44,9 +45,12 @@ void rtype::RType::stopServer() {
 #endif
 
 #ifndef RTYPE_IS_CLIENT
-rtype::RType::RType(ushort port) : _port(port), _server(_port) {}
+rtype::RType::RType(ushort port) : _port(port), _server(_port) {
+};
 #else
-rtype::RType::RType(ushort port) : _port(port), _server(_port), _client(this) {}
+rtype::RType::RType(ushort port) : _port(port), _server(_port), _client(this) {
+
+}
 #endif
 
 int rtype::RType::_run() {
@@ -96,10 +100,32 @@ int rtype::RType::_run() {
         );
 #endif
 
+
+#ifdef RTYPE_IS_SERVER
+    try {
+        rtype::server::network::UDPServer::initialize(_port);
+        rtype::server::network::UDPServer::getInstance().start();
+    } catch (std::exception &e) {
+       //TODO: stop everything
+    }
+#else
+    try {
+        server::network::UDPServer::initialize(_port);
+        std::string ip = "127.0.0.1";
+        rtype::server::network::UDPServer::getInstance().start();
+    } catch (std::exception &e) {
+        //TODO: stop everything
+    }
+#endif
+
+
+
     while (_running()) {
         systemManager.updateSystems();
 #ifdef RTYPE_IS_CLIENT
-        _client.iteration();
+        //_client.iteration();
+#else
+
 #endif
     }
     return 0;

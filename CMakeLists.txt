@@ -43,6 +43,8 @@ set(CLIENT_SRC
         src/Systems/RenderWindow.hpp
         src/Systems/InputSystem.cpp
         src/Systems/InputSystem.hpp
+        src/RType/Server/Network/UDPServer/UDPServer.cpp
+        src/RType/Server/Network/UDPServer/UDPServer.hpp
 )
 
 set(RTYPE_HEADERS
