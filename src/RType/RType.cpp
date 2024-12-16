@@ -123,7 +123,7 @@ int rtype::RType::_run() {
     while (_running()) {
         systemManager.updateSystems();
 #ifdef RTYPE_IS_CLIENT
-        //_client.iteration();
+        _client.iteration();
 #else
 
 #endif
