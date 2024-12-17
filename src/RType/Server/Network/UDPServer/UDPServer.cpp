@@ -7,6 +7,7 @@
 
 #include "spdlog/spdlog.h"
 #include "UDPServer.hpp"
+#include <asio/steady_timer.hpp>
 
 namespace rtype::server::network {
     UDPServer::StartException::StartException() {}
@@ -20,6 +21,8 @@ namespace rtype::server::network {
             throw StartException();
 
         try {
+            std::string agentType = "Server";
+
             _ioContext.restart();
         #ifdef RTYPE_IS_SERVER
             _socket = asio::ip::udp::socket(_ioContext, asio::ip::udp::endpoint(asio::ip::udp::v4(), _port));
@@ -27,6 +30,7 @@ namespace rtype::server::network {
             _send();
         #else
             _socket = asio::ip::udp::socket(_ioContext, asio::ip::udp::endpoint(asio::ip::udp::v4(), 0));
+            agentType = "Client";
         #endif
 
             _running = true;
@@ -39,7 +43,7 @@ namespace rtype::server::network {
                 }
             });
 
-            spdlog::info("Server started and running on port {}", _socket->local_endpoint().port());
+            spdlog::info("{} started and running on port {}", agentType, _socket->local_endpoint().port());
 
         } catch (const std::exception& e) {
             spdlog::error("Failed to start UDP server: {}", e.what());
@@ -125,34 +129,72 @@ namespace rtype::server::network {
         return server;
     }
 
-    //TODO: add timeout for connection
-    //TODO: wait for connection logic
+    //TODO: add ifdef for client only (also for _isConnected var)
+    //TODO: throw custom appropriate exception
     void UDPServer::_connect(std::string &ip, ushort port) {
         try {
             if (!_socket.has_value() || !_socket->is_open()) {
-                throw std::runtime_error("Server socket is not initialized or is closed.");
+                throw std::runtime_error("Server sockedt is not initialized or is closed.");
             }
 
             asio::ip::udp::endpoint serverEndpoint(asio::ip::address::from_string(ip), port);
-
             std::string message = "CONNECT";
             asio::error_code ec;
-
             _socket->send_to(asio::buffer(message), serverEndpoint, 0, ec);
 
             if (ec) {
-                spdlog::error("Error on send: {}", ec.message());
+                spdlog::error("Failed to send connection request: {}", ec.message());
                 return;
             }
 
             char reply[1024];
-            size_t reply_length = _socket->receive_from(asio::buffer(reply), serverEndpoint, 0, ec);
+            auto start = std::chrono::steady_clock::now();
+            int64_t lastElapsed = -1;
 
-            std::string replyMessage(reply, reply_length);
-            spdlog::info("Received reply from server: {}", replyMessage);
+            while (std::chrono::steady_clock::now() - start < std::chrono::seconds(5)) {
+
+                int64_t elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+                    std::chrono::steady_clock::now() - start
+                ).count();
+
+                if (elapsed != lastElapsed) {
+                    spdlog::info("Waiting for server response... ({}/5 seconds)", elapsed);
+                    lastElapsed = elapsed;
+                }
+
+                _socket->non_blocking(true);
+                size_t reply_length = _socket->receive_from(
+                    asio::buffer(reply), 
+                    serverEndpoint, 
+                    0, 
+                    ec
+                );
+                
+                if (ec == asio::error::would_block) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    continue;
+                }
+
+                if (!ec && reply_length > 0) {
+                    std::string replyMessage(reply, reply_length);
+                    _socket->non_blocking(false);
+                    if (replyMessage == "OK") {
+                        spdlog::info("Successfully connected to server after {} seconds", elapsed);
+                        _isConnected = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!_isConnected) {
+                spdlog::error("Connection timeout after 5 seconds");
+                throw std::runtime_error("Connection timeout: Server did not respond");
+            }
 
         } catch (const std::exception& e) {
-            spdlog::error("Exception occurred: {}", e.what());
+            spdlog::error("Connection failed: {}", e.what());
+            _isConnected = false;
+            throw;
         }
     }
 

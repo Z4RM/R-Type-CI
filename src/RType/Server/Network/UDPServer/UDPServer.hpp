@@ -90,6 +90,8 @@ namespace rtype::server::network {
 
         std::list<ClientInfo> _clients;
 
+        bool _isConnected = false;
+
     };
 }
 
