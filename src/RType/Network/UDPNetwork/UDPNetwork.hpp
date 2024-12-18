@@ -12,11 +12,12 @@
 #include <optional>
 #include <queue>
 #include "asio.hpp"
+#include "ThreadPool.hpp"
 
 // TODO: documentation
 #define BUFFER_SIZE 1024
 
-namespace rtype::server::network {
+namespace rtype::network {
 
 
     struct ClientInfo {
@@ -24,7 +25,7 @@ namespace rtype::server::network {
     };
 
     // TODO: documentation
-    class UDPServer {
+    class UDPNetwork {
 
     public:
         // TODO: documentation
@@ -34,12 +35,9 @@ namespace rtype::server::network {
             StartException();
         };
 
-        static UDPServer &getInstance(ushort port = 4242);
+        static UDPNetwork &getInstance(ushort port = 4242);
 
         static void initialize(ushort port) { getInstance(port); };
-
-        // TODO: documentation
-        explicit UDPServer(unsigned short port);
 
         // TODO: documentation
         /**
@@ -51,6 +49,10 @@ namespace rtype::server::network {
         void stop();
 
     private:
+
+        // TODO: documentation
+        explicit UDPNetwork(unsigned short port);
+
         // TODO: refactor
         void _receive();
 
@@ -77,6 +79,8 @@ namespace rtype::server::network {
 
         // TODO: documentation
         std::optional<asio::ip::udp::endpoint> _endpoint;
+
+        std::optional<ThreadPool> _threadPool;
 
         // TODO: documentation
         std::thread _thread;

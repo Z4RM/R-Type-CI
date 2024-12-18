@@ -12,7 +12,7 @@
 #include "Components/Player.hpp"
 #include "Systems.hpp"
 #include "RType.hpp"
-#include "./Server/Network/UDPServer/UDPServer.hpp"
+#include "./Network/UDPNetwork/UDPNetwork.hpp"
 
 int rtype::RType::run() {
     if (!Config::initialize())
@@ -46,9 +46,9 @@ void rtype::RType::stopServer() {
 #endif
 
 #ifndef RTYPE_IS_CLIENT
-rtype::RType::RType(unsigned short port) : _port(port), _server(_port) {}
+rtype::RType::RType(unsigned short port) : _port(port) {}
 #else
-rtype::RType::RType(unsigned short port) : _port(port), _server(_port), _client(this) {}
+rtype::RType::RType(unsigned short port) : _port(port), _client(this) {}
 #endif
 
 int rtype::RType::_run() {
@@ -118,16 +118,15 @@ int rtype::RType::_run() {
   // TODO: use mode manager
 #ifdef RTYPE_IS_SERVER
     try {
-        rtype::server::network::UDPServer::initialize(_port);
-        rtype::server::network::UDPServer::getInstance().start();
+        network::UDPNetwork::initialize(_port);
+        network::UDPNetwork::getInstance().start();
     } catch (std::exception &e) {
        //TODO: stop everything
     }
 #else
     try {
-        server::network::UDPServer::initialize(_port);
-        std::string ip = "127.0.0.1";
-        rtype::server::network::UDPServer::getInstance().start();
+        network::UDPNetwork::initialize(_port);
+        network::UDPNetwork::getInstance().start();
     } catch (std::exception &e) {
         //TODO: stop everything
     }

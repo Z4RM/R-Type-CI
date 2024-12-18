@@ -6,17 +6,19 @@
 */
 
 #include "spdlog/spdlog.h"
-#include "UDPServer.hpp"
+#include "UDPNetwork.hpp"
 #include <asio/steady_timer.hpp>
 
-namespace rtype::server::network {
-    UDPServer::StartException::StartException() {}
+#include "RType/Config/Config.hpp"
 
-    UDPServer::UDPServer(ushort port) : _port(port) {
+//TODO: use packets interface structures for binary data sending and receiving instead of strings
+//TODO: use mutexs to protect queues and clients
+namespace rtype::network {
+    UDPNetwork::StartException::StartException() {}
 
-    }
+    UDPNetwork::UDPNetwork(ushort port) : _port(port) {}
 
-    void UDPServer::start() {
+    void UDPNetwork::start() {
         if (_running)
             throw StartException();
 
@@ -24,6 +26,7 @@ namespace rtype::server::network {
             std::string agentType = "Server";
 
             _ioContext.restart();
+            _threadPool.emplace(2);
         #ifdef RTYPE_IS_SERVER
             _socket = asio::ip::udp::socket(_ioContext, asio::ip::udp::endpoint(asio::ip::udp::v4(), _port));
             _receive();
@@ -35,7 +38,7 @@ namespace rtype::server::network {
 
             _running = true;
 
-            _thread = std::thread([this] {
+            _threadPool->addTask([this] {
                 try {
                     _ioContext.run();
                 } catch (const std::exception& e) {
@@ -51,13 +54,14 @@ namespace rtype::server::network {
         }
 
     #ifdef RTYPE_IS_CLIENT
-        std::string serverIp = "127.0.0.1";
+        std::string serverIp = Config::getInstance().getNetwork().server.address;
+        spdlog::info("Going to connect server: {}", serverIp);
         this->_connect(serverIp, _port);
     #endif
 
     }
 
-    void UDPServer::stop() {
+    void UDPNetwork::stop() {
         _running = false;
 
         _socket->close();
@@ -71,7 +75,7 @@ namespace rtype::server::network {
         spdlog::info("Server stopped");
     }
 
-    void UDPServer::_receive() {
+    void UDPNetwork::_receive() {
         _socket->async_receive_from(
             asio::buffer(_buffer),
             *_endpoint,
@@ -97,7 +101,7 @@ namespace rtype::server::network {
         );
     }
 
-    void UDPServer::_send() {
+    void UDPNetwork::_send() {
         if (_packetsToSend.empty())
             return;
 
@@ -123,15 +127,16 @@ namespace rtype::server::network {
         _packetsToSend.pop();
     }
 
-    UDPServer &UDPServer::getInstance(ushort port) {
-        static UDPServer server(port);
+    UDPNetwork &UDPNetwork::getInstance(ushort port) {
+        static UDPNetwork server(port);
 
         return server;
     }
 
     //TODO: add ifdef for client only (also for _isConnected var)
     //TODO: throw custom appropriate exception
-    void UDPServer::_connect(std::string &ip, ushort port) {
+    //TODO: Make max seconds timeout delay configurable in config.ini
+    void UDPNetwork::_connect(std::string &ip, ushort port) {
         try {
             if (!_socket.has_value() || !_socket->is_open()) {
                 throw std::runtime_error("Server sockedt is not initialized or is closed.");
@@ -198,7 +203,7 @@ namespace rtype::server::network {
         }
     }
 
-    void UDPServer::_newPacket(std::size_t bytesReceived) {
+    void UDPNetwork::_newPacket(std::size_t bytesReceived) {
         asio::ip::udp::endpoint senderEndpoint = *_endpoint;
         std::string received(_buffer.data(), bytesReceived);
 
@@ -229,7 +234,7 @@ namespace rtype::server::network {
 
     }
 
-    void UDPServer::_removeClient(asio::ip::udp::endpoint e) {
+    void UDPNetwork::_removeClient(asio::ip::udp::endpoint e) {
         auto it = std::find_if(_clients.begin(), _clients.end(), [&](const ClientInfo& client) {
             return client.endpoint == e;
         });
