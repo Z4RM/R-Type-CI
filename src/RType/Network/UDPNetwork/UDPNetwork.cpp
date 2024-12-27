@@ -13,6 +13,7 @@
 
 //TODO: use packets interface structures for binary data sending and receiving instead of strings
 //TODO: use mutexs to protect queues and clients
+//TODO: replace ifned with isserver var in define
 namespace rtype::network {
     UDPNetwork::StartException::StartException() {}
 

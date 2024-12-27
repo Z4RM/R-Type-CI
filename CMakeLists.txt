@@ -34,6 +34,7 @@ set(RTYPE_SRC
         src/RType/Network/UDPNetwork/UDPNetwork.cpp
         src/RType/Network/UDPNetwork/UDPNetwork.hpp
         src/RType/ThreadPool/ThreadPool.cpp
+        src/RType/Network/TCPNetwork/TCPNetwork.cpp
 )
 
 set(CLIENT_SRC
@@ -52,6 +53,9 @@ set(CLIENT_SRC
         src/Systems/Network.hpp
         src/RType/ThreadPool/ThreadPool.cpp
         include/ThreadPool.hpp
+        src/RType/Network/TCPNetwork/TCPNetwork.cpp
+        src/RType/Network/TCPNetwork/TCPNetwork.hpp
+        src/RType/Network/TCPNetwork/TCPNetwork.cpp
 )
 
 set(RTYPE_HEADERS

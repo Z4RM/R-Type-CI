@@ -41,7 +41,7 @@ namespace rtype::network {
 
         // TODO: documentation
         /**
-         * @throw StartException If the server is already started.
+         * @throw StartException If there is an error on start
          */
         void start();
 
