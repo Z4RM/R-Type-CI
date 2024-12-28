@@ -80,4 +80,15 @@ struct Sprite
 };
 #endif
 
+struct Projectile
+{
+    Position position{};
+    Velocity velocity{};
+#ifdef RTYPE_IS_CLIENT
+    Animation animation;
+    Sprite sprite;
+};
+#endif
+
+
 #endif //STRUCTURE_HPP

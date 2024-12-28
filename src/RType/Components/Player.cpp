@@ -94,8 +94,46 @@ rtype::components::Player::Player(
             componentManager.getComponent<Velocity>(_id)->x = 0;
         }}
     });
+
+    _inputs.keyActions.insert({
+        sf::Keyboard::Key::Space,
+        {sf::Event::KeyPressed, [this, &entityManager, &componentManager]() {
+            this->shoot(entityManager, componentManager);
+        }}
+    });
+
     componentManager.addComponent<InputHandler>(_id, _inputs);
 }
+
+void rtype::components::Player::shoot(rtype::ecs::EntityManager &entityManager, rtype::ecs::ComponentManager &componentManager) const {
+    size_t projectileId = entityManager.createEntity();
+    Position playerPos = *componentManager.getComponent<Position>(_id);
+    Velocity projectileVel = {2.0f, 0.0f, 0.0f};
+    Position projectilePos = {playerPos.x + 10.0f, playerPos.y, playerPos.z};
+    Sprite projectileSprite = {
+        projectilePos,
+        {10.0f, 10.0f},
+        "assets/sprites/shoots.gif",
+        {1},
+        new sf::Texture(),
+        new sf::Sprite(),
+        {true}
+    };
+
+    projectileSprite.texture->loadFromFile(projectileSprite.path);
+    projectileSprite.sprite->setTexture(*projectileSprite.texture);
+
+    sf::IntRect textureRect(120, 30, 50, 20);
+    projectileSprite.sprite->setTextureRect(textureRect);
+    projectileSprite.sprite->setPosition({projectilePos.x, projectilePos.y});
+
+    componentManager.addComponent<Sprite>(projectileId, projectileSprite);
+    componentManager.addComponent<Position>(projectileId, projectilePos);
+    componentManager.addComponent<Velocity>(projectileId, projectileVel);
+    componentManager.addComponent<Size>(projectileId, {10.0f, 10.0f});
+    componentManager.addComponent<Hitbox>(projectileId, {projectilePos, {10.0f, 10.0f}});
+}
+
 
 #else
 

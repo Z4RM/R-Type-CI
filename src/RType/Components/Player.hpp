@@ -105,6 +105,7 @@ namespace rtype::components {
         [[nodiscard]] size_t getId() const { return _id; };
 
     void move(Position pos);
+    void shoot(rtype::ecs::EntityManager &entityManager, rtype::ecs::ComponentManager &componentManager) const;
 
     private:
         /**
