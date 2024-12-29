@@ -13,6 +13,7 @@
 #include "Systems.hpp"
 #include "RType.hpp"
 #include "./Network/UDPNetwork/UDPNetwork.hpp"
+#include "./Network/TCPNetwork/TCPNetwork.hpp"
 
 int rtype::RType::run() {
     if (!Config::initialize())
@@ -116,21 +117,13 @@ int rtype::RType::_run() {
 #endif
 
   // TODO: use mode manager
-#ifdef RTYPE_IS_SERVER
+    network::TCPNetwork tcpNetwork(_port);
+
     try {
-        network::UDPNetwork::initialize(_port);
-        network::UDPNetwork::getInstance().start();
+        tcpNetwork.start();
     } catch (std::exception &e) {
-       //TODO: stop everything
+        spdlog::error("Error while starting tcp network: {}", e.what());
     }
-#else
-    try {
-        network::UDPNetwork::initialize(_port);
-        network::UDPNetwork::getInstance().start();
-    } catch (std::exception &e) {
-        //TODO: stop everything
-    }
-#endif
 
     systemManager.addSystem(rtype::systems::Movement::move);
     while (_running()) {

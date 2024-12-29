@@ -33,8 +33,9 @@ set(RTYPE_SRC
         src/Systems/Movement.hpp
         src/RType/Network/UDPNetwork/UDPNetwork.cpp
         src/RType/Network/UDPNetwork/UDPNetwork.hpp
-        src/RType/ThreadPool/ThreadPool.cpp
         src/RType/Network/TCPNetwork/TCPNetwork.cpp
+        src/RType/Network/TCPNetwork/TCPNetwork.hpp
+        src/RType/ThreadPool/ThreadPool.cpp
 )
 
 set(CLIENT_SRC
