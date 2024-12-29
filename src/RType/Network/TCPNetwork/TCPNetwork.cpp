@@ -23,10 +23,11 @@ namespace rtype::network {
             asio::ip::tcp::resolver resolver(this->_ioContext);
             std::string portStr = fmt::to_string(port);
             auto endpoints = resolver.resolve("127.0.0.1", portStr);
-            this->_serverSocket.emplace(this->_ioContext);
+            this->_socket.emplace(this->_ioContext);
 
             try {
-                auto connectedEndpoint = asio::connect(this->_serverSocket.value(), endpoints);
+                asio::ip::tcp::endpoint serverEndpoint(asio::ip::make_address("127.0.0.1"), port);
+                this->connect(serverEndpoint);
                 spdlog::info("Successfully connected to the server tcp network: 127.0.0.1:{}", port);
             } catch (std::exception &e) {
                 spdlog::error("Error while connecting to the server tcp network: 127.0.0.1:{}", port);
@@ -47,7 +48,7 @@ namespace rtype::network {
             std::string message = "CONNECT";
 
             //TODO: make this async with a list of message
-            asio::write(this->_serverSocket.value(), asio::buffer(message));
+            asio::write(this->_socket.value(), asio::buffer(message));
         }
 
         for (int i = 0; i < numThreads; i++) {
@@ -87,7 +88,6 @@ namespace rtype::network {
         socket->async_read_some(asio::buffer(*buffer),
     [this, socket, buffer](const asio::error_code& error, std::size_t bytes_transferred) {
             if (!error) {
-                //TODO: make packet struct based on the packet type
                 std::string message(buffer->data(), bytes_transferred);
                 spdlog::info("New message received: {}", message);
                 //handleMessage(socket, message);
@@ -97,5 +97,27 @@ namespace rtype::network {
             }
         });
     }
+
+    void TCPNetwork::connect(const asio::ip::tcp::endpoint& endpoint) {
+        this->_socket->async_connect(endpoint, [this](const asio::error_code& ec) {
+            if (!ec) {
+                spdlog::info("Connected to server");
+                sendNextMessage();
+            } else {
+                spdlog::error("Connection failed: {}", ec.message());
+            }
+        });
+    }
+
+    void TCPNetwork::sendMessage() {
+
+    }
+
+    void TCPNetwork::sendNextMessage() {
+
+    }
+
+
+
 
 }
