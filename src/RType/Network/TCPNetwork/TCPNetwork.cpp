@@ -76,6 +76,8 @@ namespace rtype::network {
         });
     }
 
+    //TODO: clients should have a list of message to send foreah client and a way to send them message
+    // (reuse code of client part)
     //TODO: try new method to have dynamic buffer size
     void TCPNetwork::handleClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
         auto buffer = std::make_shared<std::vector<char>>(1024);
@@ -106,14 +108,14 @@ namespace rtype::network {
 
     void TCPNetwork::sendMessage(std::string &message) {
         {
-            std::lock_guard<std::mutex> lock(this->_toSendMutex);
+            std::lock_guard lock(this->_toSendMutex);
             this->_toSendQueue.push(message);
         }
         sendNextMessage();
     }
 
     void TCPNetwork::sendNextMessage() {
-        std::lock_guard<std::mutex> lock(this->_toSendMutex);
+        std::lock_guard lock(this->_toSendMutex);
 
         if (this->_toSendQueue.empty())
             return;
@@ -130,7 +132,7 @@ namespace rtype::network {
 
     void TCPNetwork::handleSend(const asio::error_code &ec) {
         {
-            std::lock_guard<std::mutex> lock(this->_toSendMutex);
+            std::lock_guard lock(this->_toSendMutex);
 
             if (!ec) {
                 spdlog::info("Message sent successfully");
