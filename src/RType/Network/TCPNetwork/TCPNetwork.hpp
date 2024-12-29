@@ -24,10 +24,11 @@ namespace rtype::network {
             void startAccept();
             void handleClient(std::shared_ptr<asio::ip::tcp::socket> socket);
 
-            //CLIENT
+            //CLIENT //TODO: make some of theses private
             void connect(const asio::ip::tcp::endpoint& endpoint);
-            void sendMessage();
+            void sendMessage(std::string &message);
             void sendNextMessage();
+            void handleSend(const asio::error_code& ec);
 
         private:
             unsigned short _port; ///< port of the self connection (0 for any)
@@ -35,6 +36,11 @@ namespace rtype::network {
             std::optional<ThreadPool> _threadPool;
             std::optional<asio::ip::tcp::socket> _socket;
             asio::io_context _ioContext;
+
+           std::queue<std::string> _toSendQueue;
+           std::mutex _toSendMutex;
+
+          bool _isSending = false;
     };
 
 }

@@ -20,11 +20,7 @@ namespace rtype::network {
         if (IS_SERVER) {
             this->_acceptor = asio::ip::tcp::acceptor(this->_ioContext, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port));
         } else {
-            asio::ip::tcp::resolver resolver(this->_ioContext);
-            std::string portStr = fmt::to_string(port);
-            auto endpoints = resolver.resolve("127.0.0.1", portStr);
             this->_socket.emplace(this->_ioContext);
-
             try {
                 asio::ip::tcp::endpoint serverEndpoint(asio::ip::make_address("127.0.0.1"), port);
                 this->connect(serverEndpoint);
@@ -47,8 +43,7 @@ namespace rtype::network {
         } else {
             std::string message = "CONNECT";
 
-            //TODO: make this async with a list of message
-            asio::write(this->_socket.value(), asio::buffer(message));
+            this->sendMessage(message);
         }
 
         for (int i = 0; i < numThreads; i++) {
@@ -109,15 +104,44 @@ namespace rtype::network {
         });
     }
 
-    void TCPNetwork::sendMessage() {
-
+    void TCPNetwork::sendMessage(std::string &message) {
+        {
+            std::lock_guard<std::mutex> lock(this->_toSendMutex);
+            this->_toSendQueue.push(message);
+        }
+        sendNextMessage();
     }
 
     void TCPNetwork::sendNextMessage() {
+        std::lock_guard<std::mutex> lock(this->_toSendMutex);
 
+        if (this->_toSendQueue.empty())
+            return;
+
+        _isSending = true;
+
+        const std::string& message = this->_toSendQueue.front();
+
+        async_write(_socket.value(), asio::buffer(message), [this](const asio::error_code& ec, std::size_t) {
+            handleSend(ec);
+        });
     }
 
 
+    void TCPNetwork::handleSend(const asio::error_code &ec) {
+        {
+            std::lock_guard<std::mutex> lock(this->_toSendMutex);
 
+            if (!ec) {
+                spdlog::info("Message sent successfully");
+                this->_toSendQueue.pop();
+            } else {
+                spdlog::error("Failed to send message: {}", ec.message());
+            }
 
+            _isSending = false;
+        }
+
+        sendNextMessage();
+    }
 }
