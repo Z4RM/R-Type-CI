@@ -54,7 +54,7 @@ jobs:
 
     - name: Configure Conan
       run: |
-        conan profile detect
+        conan profile detect --name default
         #conan profile update settings.compiler=${{ matrix.cpp_compiler }} default
         #conan profile update settings.compiler.cppstd=17 default
         #conan profile update settings.build_type=${{ matrix.build_type }} default
@@ -66,14 +66,14 @@ jobs:
     - name: Configure CMake
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
-        --preset conan-release
+        --preset conan-default
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
 
     - name: Build
-      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --preset conan-release
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --preset conan-default
 
     - name: Verify executables
       timeout-minutes: 2
