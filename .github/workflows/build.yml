@@ -53,10 +53,10 @@ jobs:
     - name: Configure Conan
       run: |
         conan profile detect
-        conan profile update settings.compiler=${{ matrix.cpp_compiler }} default
-        conan profile update settings.compiler.cppstd=17 default
-        conan profile update settings.build_type=${{ matrix.build_type }} default
-        conan profile update settings.compiler.version=default default
+        #conan profile update settings.compiler=${{ matrix.cpp_compiler }} default
+        #conan profile update settings.compiler.cppstd=17 default
+        #conan profile update settings.build_type=${{ matrix.build_type }} default
+        #conan profile update settings.compiler.version=default default
 
     - name: Install Dependencies with Conan
       run: conan install . --output-folder ${{ steps.strings.outputs.build-output-dir }} --build=missing
