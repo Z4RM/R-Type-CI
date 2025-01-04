@@ -2,6 +2,11 @@ name: Build executables with CMake on Linux and Windows
 
 on:
   workflow_call:
+    inputs:
+      EXECUTABLES:
+        description: "Coma-separated list of executables to check"
+        required: true
+        type: string
 
 jobs:
   build:
@@ -58,6 +63,24 @@ jobs:
 
     - name: Build
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+
+    - name: Verify executables
+      timeout-minutes: 2
+      run: |
+        for executable in ${EXECUTABLES//,/ }; do
+          if [ ! -x "$executable" ]; then
+            echo "::error file=$executable,title=Executable problem::This executable does not exist or is not executable"
+            exit 1
+          fi
+        done
+
+    - name: Check for un-encapsulated GLibC usage in executables
+      timeout-minutes: 2
+      run: |
+        export PATH="$PATH:$(pwd)/.github/workflows/executables"
+        for executable in ${EXECUTABLES//,/ }; do
+          GLIBCHECKER_GH_ACTIONS="true" glib_checker "$executable"
+        done
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
