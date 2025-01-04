@@ -63,6 +63,10 @@ jobs:
     - name: Install dependencies with Conan
       run: conan install . --output-folder=${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
 
+    - run: |
+      cmake --version
+      ls
+
     - name: Configure CMake
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
