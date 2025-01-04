@@ -6,18 +6,18 @@ on:
 jobs:
   build:
     name: Build
-    uses: .github/workflows/build.yml
+    uses: ./.github/workflows/build.yml
     with:
       EXECUTABLES: "r-type_server,r-type_client"
 
   lint:
     name: Lint
-    uses: .github/workflows/lint.yml
+    uses: ./.github/workflows/lint.yml
 
   common:
     name: Common
     needs:
       - build
       - lint
-    uses: .github/workflows/mirror.yml
+    uses: ./.github/workflows/mirror.yml
     secrets: inherit
