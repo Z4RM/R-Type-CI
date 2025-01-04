@@ -10,9 +10,14 @@ jobs:
     with:
       EXECUTABLES: "r-type_server,r-type_client"
 
+  lint:
+    name: "Lint"
+    uses: "./.github/workflows/super-linter.yml" # TODO: rename workflow
+
   common:
     name: "Common"
     needs:
       - "build"
+      - "lint"
     uses: "./.github/workflows/mirror.yml"
     secrets: inherit
