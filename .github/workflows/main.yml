@@ -12,7 +12,7 @@ jobs:
 
   lint:
     name: "Lint"
-    uses: "./.github/workflows/linter.yml"
+    uses: "./.github/workflows/lint.yml"
 
   common:
     name: "Common"
