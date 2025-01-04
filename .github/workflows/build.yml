@@ -64,7 +64,7 @@ jobs:
       run: conan install . --output-folder=${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
 
     - run: |
-        cat CMakeUserPresets.json
+        ls build/build/generators
 
     - name: Configure CMake
       run: >
