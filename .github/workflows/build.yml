@@ -47,6 +47,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set reusable strings
+      id: strings
+      shell: bash
+      run: echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+
     - name: Install Conan
       run: pip install conan
 
@@ -60,11 +65,6 @@ jobs:
 
     - name: Install Dependencies with Conan
       run: conan install . --output-folder ${{ steps.strings.outputs.build-output-dir }} --build=missing
-
-    - name: Set reusable strings
-      id: strings
-      shell: bash
-      run: echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Configure CMake
       run: >
