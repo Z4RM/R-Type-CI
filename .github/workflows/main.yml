@@ -12,7 +12,7 @@ jobs:
 
   lint:
     name: "Lint"
-    uses: "./.github/workflows/super-linter.yml" # TODO: rename workflow
+    uses: "./.github/workflows/linter.yml"
 
   common:
     name: "Common"
