@@ -64,7 +64,7 @@ jobs:
         #conan profile update settings.compiler.version=default default
 
     - name: Install Dependencies with Conan
-      run: conan install . --output-folder ${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install
+      run: conan install . --output-folder ${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
 
     - name: Configure CMake
       run: >
