@@ -20,6 +20,8 @@ jobs:
       - build
       - lint
     uses: ./.github/workflows/doxygen.yml
+    permissions:
+      contents: write
     secrets: inherit
 
   mirror:
