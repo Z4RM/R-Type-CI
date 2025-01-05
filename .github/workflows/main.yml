@@ -24,9 +24,15 @@ jobs:
       contents: write
     secrets: inherit
 
+  release:
+    name: Release
+    needs:
+      - doxygen
+    uses: ./.github/workflows/release.yml
+
   mirror:
     name: Mirror
     needs:
-      - doxygen
+      - release
     uses: ./.github/workflows/mirror.yml
     secrets: inherit
