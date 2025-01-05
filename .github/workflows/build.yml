@@ -56,7 +56,7 @@ jobs:
         conan profile list
         echo "build_type=${{ matrix.build_type }}" >> ${{ steps.strings.outputs.conan-profile }}
         echo "compiler=${{ matrix.cpp_compiler }}" >> ${{ steps.strings.outputs.conan-profile }}
-        conan config install ${{ steps.strings.outputs.conan-profile }}
+        conan profile detect -cc ${{ steps.strings.outputs.conan-profile }}
         conan profile list
 
     - name: Install dependencies with Conan
