@@ -7,7 +7,7 @@ jobs:
   deploy:
     name: Deploy Doxygen documentation to GitHub Pages
     runs-on: ubuntu-latest
-    #if: ${{ github.ref_name == 'main' || github.ref_name == 'dev' }}
+    if: ${{ github.ref_name == 'main' || github.ref_name == 'dev' }}
     permissions:
       contents: write
     steps:
