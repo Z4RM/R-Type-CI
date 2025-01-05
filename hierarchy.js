@@ -1,0 +1,81 @@
+var hierarchy =
+[
+    [ "A", "classA.html", [
+      [ "C", "classC.html", null ],
+      [ "D", "classD.html", [
+        [ "E", "classE.html", null ]
+      ] ]
+    ] ],
+    [ "Afterdoc_Test", "classAfterdoc__Test.html", null ],
+    [ "Animation", "structAnimation.html", null ],
+    [ "Autolink_Test", "classAutolink__Test.html", null ],
+    [ "B", "classB.html", [
+      [ "D", "classD.html", null ]
+    ] ],
+    [ "C1", "classC1.html", null ],
+    [ "C2", "classC2.html", null ],
+    [ "C3", "classC3.html", null ],
+    [ "C4", "classC4.html", null ],
+    [ "C5", "classC5.html", null ],
+    [ "rtype::Client", "classrtype_1_1Client.html", null ],
+    [ "ComponentManager", "classComponentManager.html", null ],
+    [ "rtype::ecs::ComponentManager", "classrtype_1_1ecs_1_1ComponentManager.html", null ],
+    [ "rtype::Config", "classrtype_1_1Config.html", null ],
+    [ "CoordStruct", "structCoordStruct.html", null ],
+    [ "Created", "structCreated.html", null ],
+    [ "rtype::components::Enemy", "classrtype_1_1components_1_1Enemy.html", null ],
+    [ "rtype::ecs::Entity", "structrtype_1_1ecs_1_1Entity.html", null ],
+    [ "EntityManager", "classEntityManager.html", null ],
+    [ "rtype::ecs::EntityManager", "classrtype_1_1ecs_1_1EntityManager.html", null ],
+    [ "Enum_Test", "classEnum__Test.html", null ],
+    [ "Example_Test", "classExample__Test.html", [
+      [ "Tag", "classTag.html", null ]
+    ] ],
+    [ "std::exception", null, [
+      [ "rtype::server::network::UDPServer::StartException", "classrtype_1_1server_1_1network_1_1UDPServer_1_1StartException.html", null ]
+    ] ],
+    [ "Fn_Test", "classFn__Test.html", null ],
+    [ "Hitbox", "structHitbox.html", null ],
+    [ "IA", "structIA.html", null ],
+    [ "Include_Test", "classInclude__Test.html", null ],
+    [ "rtype::components::InputHandler", "structrtype_1_1components_1_1InputHandler.html", null ],
+    [ "rtype::systems::InputSystem", "classrtype_1_1systems_1_1InputSystem.html", null ],
+    [ "Javadoc_Test", "classJavadoc__Test.html", null ],
+    [ "Memgrp_Test", "classMemgrp__Test.html", null ],
+    [ "rtype::components::Mode", "structrtype_1_1components_1_1Mode.html", null ],
+    [ "rtype::ModeManager", "classrtype_1_1ModeManager.html", null ],
+    [ "rtype::systems::Movement", "classrtype_1_1systems_1_1Movement.html", null ],
+    [ "Object", "structObject.html", [
+      [ "Vehicle", "structVehicle.html", [
+        [ "Car", "structCar.html", null ],
+        [ "Truck", "structTruck.html", null ]
+      ] ]
+    ] ],
+    [ "Overload_Test", "classOverload__Test.html", null ],
+    [ "Par_Test", "classPar__Test.html", null ],
+    [ "Player", "classPlayer.html", null ],
+    [ "rtype::components::Player", "classrtype_1_1components_1_1Player.html", null ],
+    [ "Position", "structPosition.html", null ],
+    [ "docstring.PyClass", "classdocstring_1_1PyClass.html", null ],
+    [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
+    [ "QTstyle_Test", "classQTstyle__Test.html", null ],
+    [ "rtype::systems::RenderWindowSys", "classrtype_1_1systems_1_1RenderWindowSys.html", null ],
+    [ "rtype::RType", "classrtype_1_1RType.html", null ],
+    [ "rtype::components::RWindow", "structrtype_1_1components_1_1RWindow.html", null ],
+    [ "Size", "structSize.html", null ],
+    [ "SomeNiceClass", "classSomeNiceClass.html", null ],
+    [ "rtype::ecs::SparseSet< T >", "classrtype_1_1ecs_1_1SparseSet.html", null ],
+    [ "SparseSet", "classSparseSet.html", null ],
+    [ "String", "classString.html", null ],
+    [ "rtype::components::Style", "structrtype_1_1components_1_1Style.html", null ],
+    [ "rtype::ecs::SystemManager", "classrtype_1_1ecs_1_1SystemManager.html", null ],
+    [ "SystemManager", "classSystemManager.html", null ],
+    [ "Test< T, i >", "classTest.html", null ],
+    [ "Test< void *, 200 >", "classTest.html", [
+      [ "Test< T * >", "classTest.html", null ]
+    ] ],
+    [ "rtype::server::network::UDPServer", "classrtype_1_1server_1_1network_1_1UDPServer.html", null ],
+    [ "Velocity", "structVelocity.html", null ],
+    [ "rtype::components::Window", "classrtype_1_1components_1_1Window.html", null ],
+    [ "ZIndex", "structZIndex.html", null ]
+];

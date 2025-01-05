@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['package_0',['package',['../md_wiki_2Build-and-manage-packages.html#autotoc_md45',1,'Add a package'],['../md_wiki_2Build-and-manage-packages.html#autotoc_md47',1,'Remove a package'],['../md_wiki_2Build-and-manage-packages.html#autotoc_md46',1,'Update a package']]],
+  ['packages_1',['packages',['../md_wiki_2Build-and-manage-packages.html',1,'Build and manage packages'],['../md_wiki_2Build-and-manage-packages.html#autotoc_md44',1,'Manage packages']]],
+  ['pag_5fexample_2',['pag_example',['../pag_example.html',1,'']]],
+  ['pages_20on_20this_20wiki_3',['Accessible pages on this wiki',['../md_wiki_2Home.html#autotoc_md84',1,'']]],
+  ['par_2ecpp_4',['par.cpp',['../par_8cpp.html',1,'']]],
+  ['par_5ftest_5',['Par_Test',['../classPar__Test.html',1,'']]],
+  ['path_6',['path',['../structAnimation.html#ac43deb6e77215ec9ae6fb2f57a3ea902',1,'Animation']]],
+  ['permanent_20ban_7',['4. Permanent Ban',['../md_CODE__OF__CONDUCT.html#autotoc_md10',1,'']]],
+  ['player_8',['Player',['../classPlayer.html',1,'Player'],['../classrtype_1_1components_1_1Player.html',1,'rtype::components::Player'],['../classrtype_1_1components_1_1Player.html#afc1ebc772fc45bcdff8429d1f35b50db',1,'rtype::components::Player::Player()']]],
+  ['player_2ecpp_9',['Player.cpp',['../Player_8cpp.html',1,'']]],
+  ['player_2ehpp_10',['Player.hpp',['../Player_8hpp.html',1,'']]],
+  ['pledge_11',['Our Pledge',['../md_CODE__OF__CONDUCT.html#autotoc_md1',1,'']]],
+  ['pos_12',['pos',['../structHitbox.html#a5ea6c94ab1bc59c248b205b8503d2002',1,'Hitbox']]],
+  ['position_13',['Position',['../structPosition.html',1,'']]],
+  ['potential_20extensions_14',['Potential Extensions',['../md_wiki_2ECS.html#autotoc_md82',1,'']]],
+  ['powershell_15',['Window (PowerShell)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md39',1,'']]],
+  ['prerequesties_16',['Prerequesties',['../md_wiki_2Build-and-manage-packages.html#autotoc_md34',1,'']]],
+  ['protocol_17',['R-Type Protocol',['../md_wiki_2Protocol.html',1,'']]],
+  ['protocol_2emd_18',['Protocol.md',['../Protocol_8md.html',1,'']]],
+  ['publicvar_19',['publicVar',['../classJavadoc__Test.html#a44a516fbc3a4865e2dcae34649c9df6a',1,'Javadoc_Test::publicVar'],['../classQTstyle__Test.html#aabf7b2e9ed83ea44aca4d213baae06d3',1,'QTstyle_Test::publicVar']]],
+  ['pull_20request_20conventions_20rules_20',['Pull Request Conventions/Rules',['../md_CONTRIBUTING.html#autotoc_md23',1,'']]],
+  ['pyclass_21',['PyClass',['../classdocstring_1_1PyClass.html',1,'docstring.PyClass'],['../classpyexample_1_1PyClass.html',1,'pyexample.PyClass']]],
+  ['pyexample_22',['pyexample',['../namespacepyexample.html',1,'']]],
+  ['pyexample_2epy_23',['pyexample.py',['../pyexample_8py.html',1,'']]],
+  ['pymethod_24',['PyMethod',['../classdocstring_1_1PyClass.html#a7229b3c16b9da8f8d8eb44d5876efc32',1,'docstring.PyClass.PyMethod()'],['../classpyexample_1_1PyClass.html#a127808f42ff7c534f1b89ec630f14139',1,'pyexample.PyClass.PyMethod()']]]
+];
