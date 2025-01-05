@@ -14,8 +14,8 @@ jobs:
     name: Lint
     uses: ./.github/workflows/lint.yml
 
-  common:
-    name: Common
+  mirror:
+    name: Mirror
     needs:
       - build
       - lint
