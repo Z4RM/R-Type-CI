@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['group_2ecpp_0',['group.cpp',['../group_8cpp.html',1,'']]]
+  ['player_2ecpp_0',['Player.cpp',['../Player_8cpp.html',1,'']]],
+  ['player_2ehpp_1',['Player.hpp',['../Player_8hpp.html',1,'']]],
+  ['protocol_2emd_2',['Protocol.md',['../Protocol_8md.html',1,'']]]
 ];

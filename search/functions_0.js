@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_0',['__init__',['../classdocstring_1_1PyClass.html#a03342ef04e3b83b2df9dec57a10f62c4',1,'docstring.PyClass.__init__()'],['../classpyexample_1_1PyClass.html#ac453f98ee6fbd41496b5c864bda1af21',1,'pyexample.PyClass.__init__()']]]
+  ['addcomponent_0',['addComponent',['../classrtype_1_1ecs_1_1ComponentManager.html#a621de9a68f98d9543ed59c0cf61d3032',1,'rtype::ecs::ComponentManager::addComponent()'],['../classrtype_1_1ecs_1_1SparseSet.html#a229d10596960daa9b9e4f2ba98d5063b',1,'rtype::ecs::SparseSet::addComponent()']]],
+  ['addsystem_1',['addSystem',['../classrtype_1_1ecs_1_1SystemManager.html#a75383d4c1e19abf96263dc7bb8242b7e',1,'rtype::ecs::SystemManager']]]
 ];

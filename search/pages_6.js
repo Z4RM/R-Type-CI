@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['group_205_0',['group 5',['../group__group5.html',1,'This is a section in group 5'],['../group__group5.html',1,'This is another section in group 5']]]
+  ['manage_20packages_0',['Build and manage packages',['../md_wiki_2Build-and-manage-packages.html',1,'']]]
 ];

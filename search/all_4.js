@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['5_0',['5',['../group__group5.html',1,'This is a section in group 5'],['../group__group5.html',1,'This is another section in group 5']]]
+  ['_5ffooter_0',['_Footer',['../md_wiki_2__Footer.html',1,'']]],
+  ['_5ffooter_2emd_1',['_Footer.md',['../__Footer_8md.html',1,'']]],
+  ['_5fsidebar_2',['_Sidebar',['../md_wiki_2__Sidebar.html',1,'']]],
+  ['_5fsidebar_2emd_3',['_Sidebar.md',['../__Sidebar_8md.html',1,'']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['x_0',['x',['../structCoordStruct.html#a183d7226fc5a8470ce9b9f04f9cb69bb',1,'CoordStruct::x'],['../structPosition.html#af684446cbf0f6d53386686283da6dcc6',1,'Position::x'],['../structVelocity.html#a187e49dd195f35d9566d87e75c2bd43d',1,'Velocity::x']]]
+  ['z_0',['z',['../structPosition.html#a5dc8c08d3d7209ba538ad21ba604aa44',1,'Position::z'],['../structVelocity.html#ae1d09649386160968df9cf6902830fd0',1,'Velocity::z']]],
+  ['zindex_1',['ZIndex',['../structZIndex.html',1,'']]],
+  ['zsh_2',['Linux (sh, bash, fish, zsh...)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md38',1,'']]]
 ];

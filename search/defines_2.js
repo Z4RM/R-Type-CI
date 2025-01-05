@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['disable_5fserver_0',['DISABLE_SERVER',['../ModeManager_8hpp.html#a188c5bbe59ad0917401702249fea0f76',1,'ModeManager.hpp']]]
+  ['enable_5fserver_0',['ENABLE_SERVER',['../ModeManager_8hpp.html#aad30842d51467778a345724a30fe9349',1,'ModeManager.hpp']]]
 ];

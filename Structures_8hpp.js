@@ -7,6 +7,6 @@ var Structures_8hpp =
     [ "Created", "structCreated.html", "structCreated" ],
     [ "ZIndex", "structZIndex.html", "structZIndex" ],
     [ "Animation", "structAnimation.html", "structAnimation" ],
-    [ "String", "classString.html", "classString" ],
+    [ "String", "structString.html", "structString" ],
     [ "IA", "structIA.html", "structIA" ]
 ];

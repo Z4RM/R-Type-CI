@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entity_20component_20system_20architecture_0',['Entity-Component-System Architecture',['../md_wiki_2ECS.html',1,'']]]
+  ['isomorphic_20code_0',['Isomorphic code',['../md_wiki_2Isomorphic-code.html',1,'']]]
 ];

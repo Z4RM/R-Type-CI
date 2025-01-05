@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['ecs_2ehpp_0',['ECS.hpp',['../ECS_8hpp.html',1,'']]],
-  ['ecs_2emd_1',['ECS.md',['../ECS_8md.html',1,'']]],
-  ['enemy_2ecpp_2',['Enemy.cpp',['../Enemy_8cpp.html',1,'']]],
-  ['enemy_2ehpp_3',['Enemy.hpp',['../Enemy_8hpp.html',1,'']]],
-  ['entitymanager_2ehpp_4',['EntityManager.hpp',['../EntityManager_8hpp.html',1,'']]],
-  ['enum_2eh_5',['enum.h',['../enum_8h.html',1,'']]],
-  ['example_2ecpp_6',['example.cpp',['../example_8cpp.html',1,'']]],
-  ['example_5ftest_2ecpp_7',['example_test.cpp',['../example__test_8cpp.html',1,'']]]
+  ['inputhandler_2ehpp_0',['InputHandler.hpp',['../InputHandler_8hpp.html',1,'']]],
+  ['inputsystem_2ecpp_1',['InputSystem.cpp',['../InputSystem_8cpp.html',1,'']]],
+  ['inputsystem_2ehpp_2',['InputSystem.hpp',['../InputSystem_8hpp.html',1,'']]],
+  ['isomorphic_2dcode_2emd_3',['Isomorphic-code.md',['../Isomorphic-code_8md.html',1,'']]]
 ];

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['y_0',['y',['../structCoordStruct.html#a1a5966a881bc3e76e9becf00639585ac',1,'CoordStruct::y'],['../structPosition.html#a54a6182b5f7539295b32255808897d3f',1,'Position::y'],['../structVelocity.html#adf369bfba58dde57499b342b5e7b77f8',1,'Velocity::y']]],
-  ['your_20code_20editor_20ide_20with_20cmake_20and_20conan_1',['Configure your code editor/IDE with CMake and Conan',['../md_wiki_2Build-and-manage-packages.html#autotoc_md40',1,'']]]
+  ['_7eenemy_0',['~Enemy',['../classrtype_1_1components_1_1Enemy.html#a1e18c27d56d0639dd8f22f7042e9ee3e',1,'rtype::components::Enemy']]],
+  ['_7emovement_1',['~Movement',['../classrtype_1_1systems_1_1Movement.html#a62084384c0f1c27be64cee1ea30c6584',1,'rtype::systems::Movement']]],
+  ['_7eplayer_2',['~Player',['../classrtype_1_1components_1_1Player.html#addb53bbb9569241781c90635c85330dd',1,'rtype::components::Player']]],
+  ['_7ewindow_3',['~Window',['../classrtype_1_1components_1_1Window.html#a080aa5bf72aa4787d356a5cd57ee7218',1,'rtype::components::Window']]]
 ];

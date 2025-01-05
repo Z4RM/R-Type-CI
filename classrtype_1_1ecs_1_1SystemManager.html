@@ -155,8 +155,8 @@ Public Member Functions</h2></td></tr>
 <p>This constructor initializes the <code><a class="el" href="classrtype_1_1ecs_1_1SystemManager.html">SystemManager</a></code> by associating it with the provided <code><a class="el" href="classrtype_1_1ecs_1_1EntityManager.html">EntityManager</a></code> and <code><a class="el" href="classrtype_1_1ecs_1_1ComponentManager.html">ComponentManager</a></code>. These references allow the <code><a class="el" href="classrtype_1_1ecs_1_1SystemManager.html">SystemManager</a></code> to manage and interact with the entities and their components within the ECS framework.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">entityManager</td><td><a class="el" href="classA.html">A</a> reference to the <code><a class="el" href="classrtype_1_1ecs_1_1EntityManager.html">EntityManager</a></code> responsible for managing entities. </td></tr>
-    <tr><td class="paramname">componentManager</td><td><a class="el" href="classA.html">A</a> reference to the <code><a class="el" href="classrtype_1_1ecs_1_1ComponentManager.html">ComponentManager</a></code> responsible for managing components. </td></tr>
+    <tr><td class="paramname">entityManager</td><td>A reference to the <code><a class="el" href="classrtype_1_1ecs_1_1EntityManager.html">EntityManager</a></code> responsible for managing entities. </td></tr>
+    <tr><td class="paramname">componentManager</td><td>A reference to the <code><a class="el" href="classrtype_1_1ecs_1_1ComponentManager.html">ComponentManager</a></code> responsible for managing components. </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,7 +188,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a new system to the manager. </p>
-<p>Systems are stored as functions and executed in the order they are added. <a class="el" href="classA.html">A</a> system is a function or callable object with no arguments and no return value.</p>
+<p>Systems are stored as functions and executed in the order they are added. A system is a function or callable object with no arguments and no return value.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">system</td><td>The system function to add. </td></tr>

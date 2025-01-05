@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['5_0',['5',['../group__group5.html',1,'This is a section in group 5'],['../group__group5.html',1,'This is another section in group 5']]]
+  ['_5ffooter_0',['_Footer',['../md_wiki_2__Footer.html',1,'']]],
+  ['_5fsidebar_1',['_Sidebar',['../md_wiki_2__Sidebar.html',1,'']]]
 ];

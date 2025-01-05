@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['is_5fserver_0',['IS_SERVER',['../ModeManager_8hpp.html#a019d8e42d712a3d55f2b3611b1787c87',1,'ModeManager.hpp']]]
+  ['switch_5fserver_0',['SWITCH_SERVER',['../ModeManager_8hpp.html#a0a26447dba0121f4991f1774e30cba60',1,'ModeManager.hpp']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['of_20conduct_0',['Contributor Covenant Code of Conduct',['../md_CODE__OF__CONDUCT.html',1,'']]]
+  ['system_20architecture_0',['Entity-Component-System Architecture',['../md_wiki_2ECS.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handler_0',['handler',['../classJavadoc__Test.html#ace81a523a4eef44501a841a6d338832b',1,'Javadoc_Test::handler'],['../classQTstyle__Test.html#a79dd4e5498f09057775a819d911349e2',1,'QTstyle_Test::handler']]],
-  ['height_1',['height',['../structSize.html#a880fa21eaad5a5a0fe439d440776fd05',1,'Size']]]
+  ['mode_0',['mode',['../structrtype_1_1components_1_1Mode.html#ac6d77460d47115fe93643450b4b5b92a',1,'rtype::components::Mode']]],
+  ['moves_1',['moves',['../structIA.html#a7b352afafcda5731c3a22247f33cc7e4',1,'IA']]]
 ];

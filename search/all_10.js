@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['key_20concepts_0',['Key Concepts',['../md_wiki_2ECS.html#autotoc_md52',1,'']]],
-  ['keyactions_1',['keyActions',['../structrtype_1_1components_1_1InputHandler.html#a517b0d8c0b017f4acd725c2bd9cfb625',1,'rtype::components::InputHandler']]]
+  ['license_0',['License',['../md_README.html#autotoc_md32',1,'']]],
+  ['limit_1',['limit',['../structrtype_1_1components_1_1Mode.html#aa879ddc7eece9eafe0499b361945156e',1,'rtype::components::Mode']]],
+  ['linux_20sh_20bash_20fish_20zsh_2',['Linux (sh, bash, fish, zsh...)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md38',1,'']]],
+  ['locally_3',['Run Locally',['../md_README.html#autotoc_md28',1,'']]]
 ];

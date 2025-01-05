@@ -54,7 +54,6 @@ var NAVTREE =
       ] ],
       [ "Pull Request Conventions/Rules", "md_CONTRIBUTING.html#autotoc_md23", null ]
     ] ],
-    [ "pag_example", "pag_example.html", null ],
     [ "README", "md_README.html", [
       [ "R-Type", "md_README.html#autotoc_md24", [
         [ "Documentation", "md_README.html#autotoc_md25", null ],
@@ -132,15 +131,8 @@ var NAVTREE =
       [ "Mode manager", "md_wiki_2Isomorphic-code.html#autotoc_md90", null ]
     ] ],
     [ "R-Type Protocol", "md_wiki_2Protocol.html", null ],
-    [ "Bug List", "bug.html", null ],
-    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
-      ] ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -149,10 +141,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ],
-        [ "Related Symbols", "functions_rela.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -160,22 +149,16 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "Client_8cpp.html",
-"classrtype_1_1ecs_1_1EntityManager.html",
-"par_8cpp.html"
+"md_wiki_2ECS.html#autotoc_md61"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

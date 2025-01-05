@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['read_0',['read',['../structcmd_8h.html#a9c7b76d5266903891c803132d51ccb90',1,'structcmd.h']]],
-  ['removecomponent_1',['removeComponent',['../classrtype_1_1ecs_1_1ComponentManager.html#a06b2ea546dcbacdc35c7992ec373f447',1,'rtype::ecs::ComponentManager::removeComponent()'],['../classrtype_1_1ecs_1_1SparseSet.html#ab3ed36c243059327552fe6c9b5ab212f',1,'rtype::ecs::SparseSet::removeComponent()']]],
-  ['render_2',['render',['../classrtype_1_1systems_1_1RenderWindowSys.html#a4516ad25291f7d1ac7c6d6384c08124d',1,'rtype::systems::RenderWindowSys']]],
-  ['run_3',['run',['../classrtype_1_1RType.html#a1e6ac934d0c8131ffd4a1452af4c162b',1,'rtype::RType']]],
-  ['running_4',['running',['../classrtype_1_1Client.html#ad05173f74730ab1f0121b671e3922f2e',1,'rtype::Client']]]
+  ['_7eenemy_0',['~Enemy',['../classrtype_1_1components_1_1Enemy.html#a1e18c27d56d0639dd8f22f7042e9ee3e',1,'rtype::components::Enemy']]],
+  ['_7emovement_1',['~Movement',['../classrtype_1_1systems_1_1Movement.html#a62084384c0f1c27be64cee1ea30c6584',1,'rtype::systems::Movement']]],
+  ['_7eplayer_2',['~Player',['../classrtype_1_1components_1_1Player.html#addb53bbb9569241781c90635c85330dd',1,'rtype::components::Player']]],
+  ['_7ewindow_3',['~Window',['../classrtype_1_1components_1_1Window.html#a080aa5bf72aa4787d356a5cd57ee7218',1,'rtype::components::Window']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_5ffooter_0',['_Footer',['../md_wiki_2__Footer.html',1,'']]],
-  ['_5fsidebar_1',['_Sidebar',['../md_wiki_2__Sidebar.html',1,'']]]
+  ['and_20manage_20packages_0',['Build and manage packages',['../md_wiki_2Build-and-manage-packages.html',1,'']]],
+  ['architecture_1',['Entity-Component-System Architecture',['../md_wiki_2ECS.html',1,'']]]
 ];

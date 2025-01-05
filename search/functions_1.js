@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['add_0',['add',['../restypedef_8cpp.html#a102acaaa258e937adf910898c6133545',1,'restypedef.cpp']]],
-  ['addcomponent_1',['addComponent',['../classrtype_1_1ecs_1_1ComponentManager.html#a621de9a68f98d9543ed59c0cf61d3032',1,'rtype::ecs::ComponentManager::addComponent()'],['../classrtype_1_1ecs_1_1SparseSet.html#a229d10596960daa9b9e4f2ba98d5063b',1,'rtype::ecs::SparseSet::addComponent()']]],
-  ['addsystem_2',['addSystem',['../classrtype_1_1ecs_1_1SystemManager.html#a75383d4c1e19abf96263dc7bb8242b7e',1,'rtype::ecs::SystemManager']]],
-  ['autolink_5ftest_3',['Autolink_Test',['../classAutolink__Test.html#a278d631f9943428c05b17d78f14488e2',1,'Autolink_Test']]]
+  ['client_0',['Client',['../classrtype_1_1Client.html#aae76f98304ffbeb2eaae5441d89fb4d1',1,'rtype::Client']]],
+  ['config_1',['Config',['../classrtype_1_1Config.html#a34c1639933de3be2ea6183e531d34d64',1,'rtype::Config::Config(const Config &amp;)=delete'],['../classrtype_1_1Config.html#ac5ef333eebc5c05c173ba0dc124a50d7',1,'rtype::Config::Config(Config &amp;&amp;)=delete']]],
+  ['createentity_2',['createEntity',['../classrtype_1_1ecs_1_1EntityManager.html#ad2181c79220abfc1fbdcfdac622fe1f3',1,'rtype::ecs::EntityManager']]],
+  ['createwindow_3',['createWindow',['../classrtype_1_1systems_1_1RenderWindowSys.html#ab2961155614aa4060c5d7f8e894ed5af',1,'rtype::systems::RenderWindowSys']]]
 ];

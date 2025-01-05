@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['d_0',['D',['../classD.html',1,'']]]
+  ['hitbox_0',['Hitbox',['../structHitbox.html',1,'']]]
 ];
