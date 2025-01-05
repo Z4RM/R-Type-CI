@@ -29,6 +29,7 @@ jobs:
     #needs:
     #  - doxygen
     uses: ./.github/workflows/release.yml
+    secrets: inherit
 
   mirror:
     name: Mirror
