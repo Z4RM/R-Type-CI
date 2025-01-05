@@ -16,9 +16,9 @@ jobs:
 
   doxygen:
     name: Doxygen
-    #needs:
-    #  - build
-    #  - lint
+    needs:
+      - build
+      - lint
     uses: ./.github/workflows/doxygen.yml
     permissions:
       contents: write
