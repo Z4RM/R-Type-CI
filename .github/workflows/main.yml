@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
 
   doxygen:
-    name: Dpxygen
+    name: Doxygen
     #needs:
     #  - build
     #  - lint
