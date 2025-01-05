@@ -18,20 +18,15 @@ jobs:
 
       matrix:
         os: [ubuntu-latest, windows-latest]
-        build_type: [Release]
-        compiler: [g++, msvc]
         include:
-          # Linux, Release, latest GCC compiler toolchain on the default runner image, default generator
+          # Linux, latest GCC compiler toolchain on the default runner image, default generator
           - os: ubuntu-latest
             compiler: g++
-          # Windows, Release, latest MSVC compiler toolchain on the default runner image, default generator
+            conan_preset: conan-release
+          # Windows, latest MSVC compiler toolchain on the default runner image, default generator
           - os: windows-latest
             compiler: msvc
-        exclude:
-          - os: windows-latest
-            compiler: g++
-          - os: ubuntu-latest
-            compiler: msvc
+            conan_preset: conan-default
 
     steps:
     - uses: actions/checkout@v4
@@ -52,13 +47,13 @@ jobs:
 
     - name: Configure CMake
       run: >
-        cmake --preset conan-release
+        cmake --preset ${{ matrix.conan_preset }}
         -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
-        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_BUILD_TYPE=Release
         -S ${{ github.workspace }}
 
     - name: Build
-      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --preset conan-release
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config Release --preset ${{ matrix.conan_preset }}
 
     - name: Verify executables
       timeout-minutes: 2
@@ -80,4 +75,4 @@ jobs:
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      run: ctest --build-config ${{ matrix.build_type }}
+      run: ctest --build-config Release
