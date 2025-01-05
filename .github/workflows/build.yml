@@ -19,17 +19,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         build_type: [Release]
-        compiler: [gcc, msvc]
+        compiler: [g++, msvc]
         include:
           # Linux, Release, latest GCC compiler toolchain on the default runner image, default generator
           - os: ubuntu-latest
-            compiler: gcc
+            compiler: g++
           # Windows, Release, latest MSVC compiler toolchain on the default runner image, default generator
           - os: windows-latest
             compiler: msvc
         exclude:
           - os: windows-latest
-            compiler: gcc
+            compiler: g++
           - os: ubuntu-latest
             compiler: msvc
 
