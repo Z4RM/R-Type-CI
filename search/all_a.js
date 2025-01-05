@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['fish_20zsh_0',['Linux (sh, bash, fish, zsh...)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md38',1,'']]],
-  ['format_1',['Format',['../md_CONTRIBUTING.html#autotoc_md14',1,'General Format'],['../md_CONTRIBUTING.html#autotoc_md20',1,'General Format']]],
-  ['framerate_2',['frameRate',['../structAnimation.html#aef3ade48b9e0607d8ed5c02fd422d7b3',1,'Animation']]],
-  ['from_20a_20terminal_20shell_3',['Build from a terminal (shell)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md37',1,'']]],
-  ['from_20the_20client_20and_20vice_20versa_4',['Differentiate the server from the client (and vice versa)',['../md_wiki_2Isomorphic-code.html#autotoc_md88',1,'']]],
-  ['fullscreen_5',['fullScreen',['../structrtype_1_1components_1_1Style.html#a27d06c96e34be233a1c4af7fc63f797c',1,'rtype::components::Style']]]
+  ['general_20format_0',['General Format',['../md_CONTRIBUTING.html#autotoc_md14',1,'General Format'],['../md_CONTRIBUTING.html#autotoc_md20',1,'General Format']]],
+  ['getcomponent_1',['getComponent',['../classrtype_1_1ecs_1_1ComponentManager.html#ab4cb5b400842ef8e5a82737f1b554693',1,'rtype::ecs::ComponentManager::getComponent()'],['../classrtype_1_1ecs_1_1SparseSet.html#a2aa6aa87af3db02c616a4c2f343a3b12',1,'rtype::ecs::SparseSet::getComponent()']]],
+  ['getentities_2',['getEntities',['../classrtype_1_1ecs_1_1EntityManager.html#a94de94cda6f2b1d95d561899c5bf3a1d',1,'rtype::ecs::EntityManager::getEntities()'],['../classrtype_1_1ecs_1_1SparseSet.html#a1bca2cd211d3cf407009de940e0addd7',1,'rtype::ecs::SparseSet::getEntities()']]],
+  ['getentitiessortedbyzindex_3',['getEntitiesSortedByZIndex',['../RenderWindow_8cpp.html#a8bd17d768532975600500d4ae4aa76d1',1,'RenderWindow.cpp']]],
+  ['getid_4',['getId',['../classrtype_1_1components_1_1Player.html#ab4abe73a13c77c31b6dd95fb1fc0b086',1,'rtype::components::Player::getId()'],['../classrtype_1_1components_1_1Window.html#a5749d50342ed7c13cb10877e36386a2a',1,'rtype::components::Window::getId()']]],
+  ['getinstance_5',['getInstance',['../classrtype_1_1Config.html#a61519670d7b68f9e0749060f8779f4e1',1,'rtype::Config']]],
+  ['getnetwork_6',['getNetwork',['../classrtype_1_1Config.html#a3139e1c09468d4344cea1e128e2ab6cc',1,'rtype::Config']]],
+  ['guidelines_7',['Enforcement Guidelines',['../md_CODE__OF__CONDUCT.html#autotoc_md6',1,'']]]
 ];

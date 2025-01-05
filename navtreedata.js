@@ -66,71 +66,6 @@ var NAVTREE =
         [ "License", "md_README.html#autotoc_md32", null ]
       ] ]
     ] ],
-    [ "_Footer", "md_wiki_2__Footer.html", null ],
-    [ "_Sidebar", "md_wiki_2__Sidebar.html", null ],
-    [ "Build and manage packages", "md_wiki_2Build-and-manage-packages.html", [
-      [ "Prerequesties", "md_wiki_2Build-and-manage-packages.html#autotoc_md34", null ],
-      [ "CMake", "md_wiki_2Build-and-manage-packages.html#autotoc_md35", null ],
-      [ "Conan", "md_wiki_2Build-and-manage-packages.html#autotoc_md36", null ],
-      [ "Build from a terminal (shell)", "md_wiki_2Build-and-manage-packages.html#autotoc_md37", [
-        [ "Linux (sh, bash, fish, zsh...)", "md_wiki_2Build-and-manage-packages.html#autotoc_md38", null ],
-        [ "Window (PowerShell)", "md_wiki_2Build-and-manage-packages.html#autotoc_md39", null ]
-      ] ],
-      [ "Configure your code editor/IDE with CMake and Conan", "md_wiki_2Build-and-manage-packages.html#autotoc_md40", [
-        [ "Jetbrains (CLion)", "md_wiki_2Build-and-manage-packages.html#autotoc_md41", null ],
-        [ "Visual Studio Code", "md_wiki_2Build-and-manage-packages.html#autotoc_md42", null ],
-        [ "Other", "md_wiki_2Build-and-manage-packages.html#autotoc_md43", null ]
-      ] ],
-      [ "Manage packages", "md_wiki_2Build-and-manage-packages.html#autotoc_md44", [
-        [ "Add a package", "md_wiki_2Build-and-manage-packages.html#autotoc_md45", null ],
-        [ "Update a package", "md_wiki_2Build-and-manage-packages.html#autotoc_md46", null ],
-        [ "Remove a package", "md_wiki_2Build-and-manage-packages.html#autotoc_md47", null ]
-      ] ]
-    ] ],
-    [ "Entity-Component-System Architecture", "md_wiki_2ECS.html", [
-      [ "Overview", "md_wiki_2ECS.html#autotoc_md50", [
-        [ "Key Concepts", "md_wiki_2ECS.html#autotoc_md52", null ],
-        [ "Architecture Overview", "md_wiki_2ECS.html#autotoc_md54", null ]
-      ] ],
-      [ "Class Breakdown", "md_wiki_2ECS.html#autotoc_md56", [
-        [ "EntityManager", "md_wiki_2ECS.html#autotoc_md57", null ],
-        [ "SparseSet", "md_wiki_2ECS.html#autotoc_md58", [
-          [ "Sparse Set Visualization", "md_wiki_2ECS.html#autotoc_md59", null ]
-        ] ],
-        [ "ComponentManager", "md_wiki_2ECS.html#autotoc_md60", null ],
-        [ "SystemManager", "md_wiki_2ECS.html#autotoc_md61", null ]
-      ] ],
-      [ "ECS Workflow", "md_wiki_2ECS.html#autotoc_md63", [
-        [ "Create Entities", "md_wiki_2ECS.html#autotoc_md64", null ]
-      ] ],
-      [ "Class Breakdown", "md_wiki_2ECS.html#autotoc_md66", [
-        [ "EntityManager", "md_wiki_2ECS.html#autotoc_md67", null ],
-        [ "SparseSet", "md_wiki_2ECS.html#autotoc_md68", [
-          [ "Sparse Set Visualization", "md_wiki_2ECS.html#autotoc_md69", null ]
-        ] ],
-        [ "ComponentManager", "md_wiki_2ECS.html#autotoc_md70", null ],
-        [ "SystemManager", "md_wiki_2ECS.html#autotoc_md71", null ]
-      ] ],
-      [ "ECS Workflow", "md_wiki_2ECS.html#autotoc_md73", [
-        [ "Create Entities", "md_wiki_2ECS.html#autotoc_md74", null ],
-        [ "Add Components", "md_wiki_2ECS.html#autotoc_md75", null ],
-        [ "Regiser System", "md_wiki_2ECS.html#autotoc_md76", null ],
-        [ "Execute Systems", "md_wiki_2ECS.html#autotoc_md77", null ],
-        [ "Code Example", "md_wiki_2ECS.html#autotoc_md78", null ],
-        [ "Advantages of This ECS Design", "md_wiki_2ECS.html#autotoc_md80", null ],
-        [ "Potential Extensions", "md_wiki_2ECS.html#autotoc_md82", null ]
-      ] ]
-    ] ],
-    [ "Welcome to the R-Type wiki!", "md_wiki_2Home.html", [
-      [ "Accessible pages on this wiki", "md_wiki_2Home.html#autotoc_md84", null ]
-    ] ],
-    [ "Isomorphic code", "md_wiki_2Isomorphic-code.html", [
-      [ "Overview", "md_wiki_2Isomorphic-code.html#autotoc_md86", null ],
-      [ "Implementation", "md_wiki_2Isomorphic-code.html#autotoc_md87", null ],
-      [ "Differentiate the server from the client (and vice versa)", "md_wiki_2Isomorphic-code.html#autotoc_md88", null ],
-      [ "Mode manager", "md_wiki_2Isomorphic-code.html#autotoc_md90", null ]
-    ] ],
-    [ "R-Type Protocol", "md_wiki_2Protocol.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -158,7 +93,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Client_8cpp.html",
-"md_wiki_2ECS.html#autotoc_md61"
+"structSize.html#af0be19024ddd79e7843492b3760c21f0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

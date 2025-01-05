@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['license_0',['License',['../md_README.html#autotoc_md32',1,'']]],
-  ['limit_1',['limit',['../structrtype_1_1components_1_1Mode.html#aa879ddc7eece9eafe0499b361945156e',1,'rtype::components::Mode']]],
-  ['linux_20sh_20bash_20fish_20zsh_2',['Linux (sh, bash, fish, zsh...)',['../md_wiki_2Build-and-manage-packages.html#autotoc_md38',1,'']]],
-  ['locally_3',['Run Locally',['../md_README.html#autotoc_md28',1,'']]]
+  ['naming_20conventions_0',['Branch Naming Conventions',['../md_CONTRIBUTING.html#autotoc_md13',1,'']]],
+  ['naming_20rules_1',['Branch Naming Rules',['../md_CONTRIBUTING.html#autotoc_md17',1,'']]],
+  ['nbframes_2',['nbFrames',['../structAnimation.html#aa83a1c5ca7c696e8ac62138fb4037c95',1,'Animation']]],
+  ['none_3',['none',['../structrtype_1_1components_1_1Style.html#a310da8e35c261ee1738615d19cfe28a6',1,'rtype::components::Style']]]
 ];

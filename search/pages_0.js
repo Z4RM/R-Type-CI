@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['_5ffooter_0',['_Footer',['../md_wiki_2__Footer.html',1,'']]],
-  ['_5fsidebar_1',['_Sidebar',['../md_wiki_2__Sidebar.html',1,'']]]
+  ['code_20of_20conduct_0',['Contributor Covenant Code of Conduct',['../md_CODE__OF__CONDUCT.html',1,'']]],
+  ['conduct_1',['Contributor Covenant Code of Conduct',['../md_CODE__OF__CONDUCT.html',1,'']]],
+  ['contributing_2',['Contributing',['../md_CONTRIBUTING.html',1,'']]],
+  ['contributor_20covenant_20code_20of_20conduct_3',['Contributor Covenant Code of Conduct',['../md_CODE__OF__CONDUCT.html',1,'']]],
+  ['covenant_20code_20of_20conduct_4',['Contributor Covenant Code of Conduct',['../md_CODE__OF__CONDUCT.html',1,'']]]
 ];

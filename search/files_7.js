@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['player_2ecpp_0',['Player.cpp',['../Player_8cpp.html',1,'']]],
-  ['player_2ehpp_1',['Player.hpp',['../Player_8hpp.html',1,'']]],
-  ['protocol_2emd_2',['Protocol.md',['../Protocol_8md.html',1,'']]]
+  ['udpserver_2ecpp_0',['UDPServer.cpp',['../UDPServer_8cpp.html',1,'']]],
+  ['udpserver_2ehpp_1',['UDPServer.hpp',['../UDPServer_8hpp.html',1,'']]]
 ];
