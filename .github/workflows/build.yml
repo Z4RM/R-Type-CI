@@ -50,6 +50,7 @@ jobs:
         cmake --preset ${{ matrix.conan_preset }}
         -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
         -DCMAKE_BUILD_TYPE=Release
+        -D_WIN32_WINNT=0x0A00
         -S ${{ github.workspace }}
 
     - name: Build
