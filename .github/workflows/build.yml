@@ -41,22 +41,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install Conan
+      run: pip install conan
+
     - name: Set reusable strings
       id: strings
       shell: bash
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
         echo "conan-profile=./.github/workflows/conan/${{ matrix.os }}.conf" >> "$GITHUB_OUTPUT"
-
-    - name: Install Conan
-      run: pip install conan
+        echo "conan-home=$(conan config home)" >> "$GITHUB_OUTPUT"
 
     - name: Configure Conan
       run: |
-        conan profile list
         echo "build_type=${{ matrix.build_type }}" >> ${{ steps.strings.outputs.conan-profile }}
         echo "compiler=${{ matrix.cpp_compiler }}" >> ${{ steps.strings.outputs.conan-profile }}
-        conan profile detect -cc ${{ steps.strings.outputs.conan-profile }}
+        cp ${{ steps.strings.outputs.conan-profile }} ${{ steps.strings.outputs.conan-home }}/profiles
         conan profile list
 
     - name: Install dependencies with Conan
