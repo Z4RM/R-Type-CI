@@ -19,24 +19,19 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         build_type: [Release]
-        cpp_compiler: [g++, clang++, cl]
+        compiler: [gcc, msvc]
         include:
           # Linux, Release, latest GCC compiler toolchain on the default runner image, default generator
           - os: ubuntu-latest
-            cpp_compiler: g++
-          # Linux, Release, latest Clang compiler toolchain on the default runner image, default generator
-          - os: ubuntu-latest
-            cpp_compiler: clang++
+            compiler: gcc
           # Windows, Release, latest MSVC compiler toolchain on the default runner image, default generator
           - os: windows-latest
-            cpp_compiler: cl
+            compiler: msvc
         exclude:
           - os: windows-latest
-            cpp_compiler: g++
-          - os: windows-latest
-            cpp_compiler: clang++
+            compiler: gcc
           - os: ubuntu-latest
-            cpp_compiler: cl
+            compiler: msvc
 
     steps:
     - uses: actions/checkout@v4
@@ -52,10 +47,7 @@ jobs:
       run: pip install conan
 
     - name: Configure Conan
-      run: |
-        echo "build_type=${{ matrix.build_type }}" >> ${{ steps.strings.outputs.conan-profile }}
-        echo "compiler=${{ matrix.cpp_compiler }}" >> ${{ steps.strings.outputs.conan-profile }}
-        cat ${{ steps.strings.outputs.conan-profile }}
+      run: conan profile detect
 
     - name: Install dependencies with Conan
       run: conan install . --profile:build=${{ steps.strings.outputs.conan-profile }} --profile:host=${{ steps.strings.outputs.conan-profile }} --output-folder=${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
@@ -63,7 +55,7 @@ jobs:
     - name: Configure CMake
       run: >
         cmake --preset conan-release
-        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
 
