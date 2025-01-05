@@ -63,19 +63,16 @@ jobs:
     - name: Install dependencies with Conan
       run: conan install . --output-folder=${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
 
-    - run: |
-        ls build/build/generators
-
     - name: Configure CMake
       run: >
-        cmake --preset conan-default
+        cmake --preset conan-release
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
 
     - name: Build
-      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --preset conan-default
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --preset conan-release
 
     - name: Verify executables
       timeout-minutes: 2
