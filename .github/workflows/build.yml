@@ -10,12 +10,9 @@ on:
 
 jobs:
   build:
+    name: Build and verify executables
     runs-on: ${{ matrix.os }}
-
     strategy:
-      # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
-      fail-fast: false
-
       matrix:
         os: [ubuntu-latest, windows-latest]
         include:
