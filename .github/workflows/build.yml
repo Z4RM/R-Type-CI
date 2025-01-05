@@ -55,6 +55,7 @@ jobs:
       run: |
         echo "build_type=${{ matrix.build_type }}" >> ${{ steps.strings.outputs.conan-profile }}
         echo "compiler=${{ matrix.cpp_compiler }}" >> ${{ steps.strings.outputs.conan-profile }}
+        echo ${{ steps.strings.outputs.conan-profile }}
 
     - name: Install dependencies with Conan
       run: conan install . --profile:build=${{ steps.strings.outputs.conan-profile }} --profile:host=${{ steps.strings.outputs.conan-profile }} --output-folder=${{ steps.strings.outputs.build-output-dir }} --build=missing -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True
