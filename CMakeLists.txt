@@ -55,6 +55,10 @@ set(RTYPE_HEADERS
 
 link_libraries(inih::inireader spdlog::spdlog asio::asio)
 
+if(WIN32)
+    add_compile_definitions(_WIN32_WINNT=0x0A00)
+endif()
+
 #region Server
 add_executable(r-type_server ${RTYPE_SRC} ${RTYPE_HEADERS})
 
