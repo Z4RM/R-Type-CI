@@ -53,7 +53,7 @@ jobs:
         -S ${{ github.workspace }}
 
     - name: Build
-      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config Release --preset ${{ matrix.conan_preset }}
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config Release --preset conan-release
 
     - name: Verify executables
       timeout-minutes: 2
