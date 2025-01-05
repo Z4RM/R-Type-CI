@@ -26,8 +26,8 @@ jobs:
 
   release:
     name: Release
-    needs:
-      - doxygen
+    #needs:
+    #  - doxygen
     uses: ./.github/workflows/release.yml
 
   mirror:
