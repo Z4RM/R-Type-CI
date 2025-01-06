@@ -80,3 +80,9 @@ jobs:
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
       run: ctest --build-config Release
+
+    - name: Upload artifact with built binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.os }}-artifact
+        path: build/r-type_*
