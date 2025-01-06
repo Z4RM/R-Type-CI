@@ -8,6 +8,9 @@ on:
         required: true
         type: string
 
+env:
+  EXECUTABLES: ${{ inputs.EXECUTABLES }}
+
 jobs:
   build:
     name: Build and verify executables
@@ -56,8 +59,7 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       timeout-minutes: 2
       run: |
-        for executable in ${${{ inputs.EXECUTABLES }}//,/ }; do
-          echo "::error file=$executable,title=Checking executable::"
+        for executable in ${EXECUTABLES//,/ }; do
           if [ ! -x "$executable" ]; then
             echo "::error file=$executable,title=Executable problem::This executable does not exist or is not executable"
             exit 1
