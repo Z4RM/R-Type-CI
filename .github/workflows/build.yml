@@ -56,7 +56,6 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       timeout-minutes: 2
       run: |
-        echo "::error::${{ inputs.EXECUTABLES }}"
         for executable in ${${{ inputs.EXECUTABLES }}//,/ }; do
           echo "::error file=$executable,title=Checking executable::"
           if [ ! -x "$executable" ]; then
