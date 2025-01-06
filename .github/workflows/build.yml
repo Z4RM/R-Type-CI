@@ -86,3 +86,4 @@ jobs:
       with:
         name: build-${{ matrix.os }}-artifact
         path: build/r-type_*
+        if-no-files-found: error
