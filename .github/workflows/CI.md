@@ -34,4 +34,4 @@ flowchart
     Mirror --> End
 ```
 
-To create a release, create a tag.
+To create a release, create a tag named following the [Semantic Versioning](https://semver.org) format.
