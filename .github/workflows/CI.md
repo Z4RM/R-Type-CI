@@ -22,6 +22,7 @@ flowchart
     Linux --> BuildAfter
     Windows --> BuildAfter
     BuildAfter --> IsDev
+    BuildAfter --> IsTag
     Lint --> IsDev
     Lint --> IsTag
     IsDev -->|Yes| Doxygen
