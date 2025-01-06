@@ -57,6 +57,7 @@ jobs:
       timeout-minutes: 2
       run: |
         for executable in ${EXECUTABLES//,/ }; do
+          echo "::error file=$executable,title=Checking executable::"
           if [ ! -x "$executable" ]; then
             echo "::error file=$executable,title=Executable problem::This executable does not exist or is not executable"
             exit 1
