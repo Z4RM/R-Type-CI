@@ -35,3 +35,4 @@ flowchart
 ```
 
 To create a release, create a tag named following the [Semantic Versioning](https://semver.org) format.
+Think changing the version where it's mentioned (among others, the `CMakeLists.txt`)
