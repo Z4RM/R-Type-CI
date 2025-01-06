@@ -56,8 +56,8 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       timeout-minutes: 2
       run: |
-        echo "::error::${{ inputs.username }}"
-        for executable in ${${{ inputs.username }}//,/ }; do
+        echo "::error::${{ inputs.EXECUTABLES }}"
+        for executable in ${${{ inputs.EXECUTABLES }}//,/ }; do
           echo "::error file=$executable,title=Checking executable::"
           if [ ! -x "$executable" ]; then
             echo "::error file=$executable,title=Executable problem::This executable does not exist or is not executable"
