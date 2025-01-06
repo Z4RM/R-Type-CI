@@ -8,7 +8,7 @@ jobs:
     name: Build
     uses: ./.github/workflows/build.yml
     with:
-      EXECUTABLES: "b/r-type_server,b/r-type_client"
+      EXECUTABLES: "build/r-type_server,build/r-type_client"
 
   lint:
     name: Lint
