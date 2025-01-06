@@ -2,10 +2,6 @@ name: R-Type CI
 
 on:
   push:
-    branches:
-      - "**"
-    tags:
-      - "**"
 
 jobs:
   build:
