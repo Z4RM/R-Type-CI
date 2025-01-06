@@ -26,8 +26,9 @@ jobs:
 
   release:
     name: Release
-    #needs:
-    #  - doxygen
+    needs:
+      - build
+      - lint
     uses: ./.github/workflows/release.yml
     permissions:
       contents: write
@@ -36,6 +37,6 @@ jobs:
   mirror:
     name: Mirror
     needs:
-      - release
+      - doxygen
     uses: ./.github/workflows/mirror.yml
     secrets: inherit
