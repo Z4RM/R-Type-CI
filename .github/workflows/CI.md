@@ -32,3 +32,5 @@ flowchart
     IsTag -->|Yes| Release
     Mirror --> End
 ```
+
+To create a release, create a tag.
