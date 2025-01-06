@@ -2,8 +2,6 @@ name: R-Type CI
 
 on:
   push:
-  create:
-    ref_type: tag
 
 jobs:
   build:
