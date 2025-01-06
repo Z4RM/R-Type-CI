@@ -10,6 +10,7 @@ flowchart
     Doxygen[Generate documentation from Doxygen comments]
     IsMain{Is this the main branch?}
     IsDev{Is this the main or dev branch?}
+    IsTag{Is the push made on a tag?}
     Release[Create a release]
     Mirror[Mirror the repository to the Epitech one]
     End([End, all is good 👌])
@@ -22,11 +23,12 @@ flowchart
     Windows --> BuildAfter
     BuildAfter --> IsDev
     Lint --> IsDev
+    Lint --> IsTag
     IsDev -->|Yes| Doxygen
     IsDev -->|No| End
     Doxygen --> IsMain
-    IsMain -->|Yes| Release
+    IsMain -->|Yes| Mirror
     IsMain -->|No| End
-    Release --> Mirror
+    IsTag -->|Yes| Release
     Mirror --> End
 ```
