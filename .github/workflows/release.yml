@@ -19,6 +19,9 @@ jobs:
         with:
           merge-multiple: true
 
+      - name: Create an archive containing the game assets
+        run: tar -zcvf assets.tar.gz assets
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
@@ -28,5 +31,7 @@ jobs:
             r-type_client.exe
             r-type_server
             r-type_server.exe
+            assets.tar.gz
+            config.ini.example
           fail_on_unmatched_files: true
           generate_release_notes: true
